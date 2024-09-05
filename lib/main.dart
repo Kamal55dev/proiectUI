@@ -1,5 +1,4 @@
 import 'package:badminton/modules/coach_module/coach_home/views/coach_home_screen.dart';
-import 'package:badminton/modules/orientation_module/orientation_reqsuccess_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
