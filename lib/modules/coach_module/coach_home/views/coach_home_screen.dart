@@ -13,15 +13,10 @@ class CoachHomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // var kheight = MediaQuery.of(context).size.height;
     // var kwidth = MediaQuery.of(context).size.width;
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: black,
       body: Column(
-        children: [
-          CustomText(
-            text: "text",
-            fontSize: getResponsiveFontSize(context, 12),
-          )
-        ],
+        children: [],
       ),
     );
   }
