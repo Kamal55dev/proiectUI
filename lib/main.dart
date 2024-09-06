@@ -1,4 +1,4 @@
-import 'package:badminton/modules/coach_module/coach_home/views/coach_home_screen.dart';
+import 'package:badminton/modules/orientation_module/orientation_home/orientation_home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(fontFamily: "Poppins"),
       // home: req_success(
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       //   textOne: 'Request Sent',
       //   textTwo: 'Successfully',
       // ),
-      home: const CoachHomeScreen(),
+      home: const OrientationHome(),
     );
   }
 }

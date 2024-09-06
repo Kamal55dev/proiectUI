@@ -9,3 +9,4 @@ const grey = Colors.grey;
 const red = Colors.red;
 const blue = Colors.blue;
 final darkBlue = Colors.blue[900]!;
+const lightGrey = Color.fromARGB(255, 87, 85, 85);

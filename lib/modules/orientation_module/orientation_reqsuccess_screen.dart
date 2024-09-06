@@ -1,14 +1,15 @@
 import 'package:badminton/common/common_font_size.dart';
+import 'package:badminton/common/common_size.dart';
 import 'package:badminton/common/common_text.dart';
 import 'package:badminton/core/utils/colors.dart';
 import 'package:flutter/material.dart';
 
-class req_success extends StatelessWidget {
+class OreRaqSuccessScreen extends StatelessWidget {
   final String image;
   final String textOne;
   final String textTwo;
 
-  const req_success(
+  const OreRaqSuccessScreen(
       {super.key,
       required this.image,
       required this.textOne,
@@ -17,8 +18,8 @@ class req_success extends StatelessWidget {
   Widget build(BuildContext context) {
     // Getting the size of the screen
     final size = MediaQuery.of(context).size;
-    final kHeight = MediaQuery.of(context).size.width;
-    final kWidth = MediaQuery.of(context).size.height;
+    // final kHeight = MediaQuery.of(context).size.height;
+    // final kWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       backgroundColor: const Color(0xFF202326), // background color
@@ -42,7 +43,6 @@ class req_success extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(),
           // Center logo and text widgets
           Center(
             child: Column(
@@ -58,10 +58,12 @@ class req_success extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: size.height *
-                      0.02, // Proportional spacing between logo and text
-                ),
+
+                kHeight(context, 0.02),
+                // SizedBox(
+                //   height: size.height *
+                //       0.02, // Proportional spacing between logo and text
+                // ),
                 // First text widget
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: size.width * 0.1),
@@ -73,10 +75,12 @@ class req_success extends StatelessWidget {
                     color: white,
                   ),
                 ),
+
+                kHeight(context, 0.01),
                 SizedBox(
-                    height:
-                        size.height * 0.01), // Additional spacing between texts
-                // Second text widget
+                  height: size.height *
+                      0.01, // Proportional spacing between logo and text
+                ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: size.width * 0.1),
                   child: CustomText(
