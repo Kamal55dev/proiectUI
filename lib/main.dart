@@ -1,8 +1,13 @@
-import 'package:badminton/modules/coach_module/coach_home/views/coach_home_screen.dart';
+import 'package:badminton/screens/RAK_curriculum/RKM_Curriculum.dart';
+import 'package:badminton/screens/Wellness.dart';
+import 'package:badminton/screens/player_dashbord.dart';
+import 'package:badminton/screens/rak_podium.dart';
+import 'package:badminton/screens/skill_assessment.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child:MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -11,9 +16,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(fontFamily: "Poppins"),
-      home: const CoachHomeScreen(),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark(),
+      initialRoute: '/PlayerDashboard',
+      routes: {
+        '/PlayerDashboard': (context) => const PlayerDashboard(),
+        '/RAKPodiumScreen': (context) =>  const RakPodium(),
+        '/CurriculumPage': (context) =>  const CurriculumPage(),
+        '/SkillAssessment': (context) =>  const SkillAssessment(),
+        '/WellnessScreen': (context) => const WellnessScreen(),
+      },
     );
   }
 }
