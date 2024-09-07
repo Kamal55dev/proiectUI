@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class RakPodium extends ConsumerWidget {
-  const RakPodium({Key? key}) : super(key: key);
+  const RakPodium({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

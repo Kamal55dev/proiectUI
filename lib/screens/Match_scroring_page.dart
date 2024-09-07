@@ -1,12 +1,14 @@
 // ui/match_scoring_screen.dart
 
+// ignore_for_file: unused_local_variable, file_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../controller/provider/match_scoring_provider.dart';
 import '../modules/player_models/Match_scoring_model.dart';
 
 class MatchScoringScreen extends ConsumerWidget {
-  const MatchScoringScreen({Key? key}) : super(key: key);
+  const MatchScoringScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -122,11 +124,11 @@ class MatchScoringScreen extends ConsumerWidget {
         return Padding(
           padding: const EdgeInsets.only(right: 8.0),
           child: ElevatedButton(
-            child: Text(type),
             onPressed: () => ref.read(matchProvider.notifier).updateMatchType(type),
             style: ElevatedButton.styleFrom(
               backgroundColor: matchType == type ? Colors.orange : Colors.grey[800],
             ),
+            child: Text(type),
           ),
         );
       }).toList(),
@@ -200,7 +202,7 @@ Widget _buildPlayerInfo(String playerName) {
 
 // Score Box
 Widget _buildScoreBox(WidgetRef ref, int playerIndex, int gameIndex, int initialValue) {
-  return Container(
+  return SizedBox(
     width: 50,
     child: TextField(
       controller: TextEditingController(text: initialValue.toString()),
@@ -247,7 +249,6 @@ Widget _buildScoreBox(WidgetRef ref, int playerIndex, int gameIndex, int initial
     return Column(
       children: [
         ElevatedButton(
-          child: const Text('Update'),
           onPressed: () {
             // Handle update logic
           },
@@ -255,15 +256,16 @@ Widget _buildScoreBox(WidgetRef ref, int playerIndex, int gameIndex, int initial
             backgroundColor: Colors.orange,
             minimumSize: const Size(double.infinity, 50),
           ),
+          child: const Text('Update'),
         ),
         const SizedBox(height: 10),
         OutlinedButton(
-          child: const Text('Delete this Match', style: TextStyle(color: Colors.red)),
           onPressed: () => ref.read(matchProvider.notifier).deleteMatch(),
           style: OutlinedButton.styleFrom(
             side: const BorderSide(color: Colors.red),
             minimumSize: const Size(double.infinity, 50),
           ),
+          child: const Text('Delete this Match', style: TextStyle(color: Colors.red)),
         ),
       ],
     );

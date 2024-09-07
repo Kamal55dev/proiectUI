@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../controller/provider/Wellness_provider.dart';
@@ -204,9 +206,9 @@ Widget _buildLabelCard(String label) {
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
         children: [
-          SizedBox(width: 40, child: Text(day, style: TextStyle(color: Colors.white70))),
+          SizedBox(width: 40, child: Text(day, style: const TextStyle(color: Colors.white70))),
           const SizedBox(width: 8),
-          Text('${(value * 100).toInt()}%', style: TextStyle(color: Colors.white70)),
+          Text('${(value * 100).toInt()}%', style: const TextStyle(color: Colors.white70)),
           const SizedBox(width: 8),
           Expanded(
             child: ClipRRect(

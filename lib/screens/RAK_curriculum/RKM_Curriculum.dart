@@ -308,11 +308,12 @@
 
 
 
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../controller/provider/curriculum_provider/curriculam_provider.dart';
 import '../../modules/player_models/RAK_curriculum/Curriculam_model.dart';
-import 'assign_curriculum.dart';
 
 class CurriculumPage extends ConsumerWidget {
   const CurriculumPage({super.key});

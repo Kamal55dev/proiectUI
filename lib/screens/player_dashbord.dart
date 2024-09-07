@@ -127,7 +127,7 @@ class PlayerDashboard extends ConsumerWidget {
               Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => CurriculumPage(),
+                      builder: (context) => const CurriculumPage(),
                     ),
               );
             },
@@ -188,7 +188,7 @@ class PlayerDashboard extends ConsumerWidget {
                     Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => RakPodium(),
+                      builder: (context) => const RakPodium(),
                     ),
                   );
                   },
@@ -258,7 +258,7 @@ class PlayerDashboard extends ConsumerWidget {
                    Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SkillAssessment(),
+                      builder: (context) => const SkillAssessment(),
                     ),
                   );          
                   },

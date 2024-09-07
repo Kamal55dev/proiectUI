@@ -1,5 +1,7 @@
 // models/match_model.dart
 
+// ignore_for_file: file_names
+
 class Player {
   final String name;
   final String imageUrl;

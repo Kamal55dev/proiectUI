@@ -41,6 +41,8 @@
 // });
 
 
+// ignore_for_file: file_names
+
 // Provider for Wellness parameters (state management)
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
