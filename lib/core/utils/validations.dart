@@ -120,10 +120,3 @@ String? validateSpecialist(String? value) {
   }
   return null;
 }
-
-String? validateteamName(String? value) {
-  if (value == null || value.isEmpty) {
-    return 'Please enter your team name';
-  }
-  return null;
-}

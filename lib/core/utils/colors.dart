@@ -10,4 +10,3 @@ const blue = Colors.blue;
 final darkBlue = Colors.blue[900]!;
 const boxColor = Color(0xB239434F);
 const bgColor = Color.fromRGBO(33, 38, 32, 1.0);
-

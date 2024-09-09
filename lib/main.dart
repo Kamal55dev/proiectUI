@@ -1,7 +1,6 @@
-import 'package:badminton/modules/coach_module/coach_skillassesment/views/assesment_report.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+import 'modules/authentication/signin_module/splash_scrn.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,11 +12,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ProviderScope(
+      // Wrap the MaterialApp with ProviderScope
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(fontFamily: "Poppins"),
-        home: const AssesmentReportScreen(),
+        title: 'My App',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const SplashScreen(), // Set your initial screen here
       ),
     );
   }
