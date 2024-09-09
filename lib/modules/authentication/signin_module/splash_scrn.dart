@@ -37,7 +37,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
           // Background image
           Positioned.fill(
             child: Image.asset(
-              'assets/images/bg_images/Looper BG.png', // Replace with your background image asset path
+              'assets/images/bg_images/Looper Bg image.png', // Replace with your background image asset path
               fit: BoxFit.cover,
             ),
           ),
@@ -59,8 +59,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
                 ),
                 const Text(
                   'Innovation by',
-                  style: TextStyle(
-                      color: Colors.white, fontSize: 16, fontFamily: 'Poppins'),
+                  style: TextStyle(color: Colors.white, fontSize: 16, fontFamily: 'Poppins'),
                 ),
                 const Text(
                   'Ulchemy',

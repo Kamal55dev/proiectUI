@@ -19,7 +19,7 @@ class PlayingProfile extends StatelessWidget {
             children: [
               Positioned.fill(
                 child: Image.asset(
-                  'assets/images/bg_images/Looper BG.png', // Replace with your background image path
+                  'assets/images/bg_images/Looper Bg image.png', // Replace with your background image path
                   fit: BoxFit.cover,
                   // color: Colors.transparent.withOpacity(0.5),
                 ),
@@ -47,8 +47,7 @@ class PlayingProfile extends StatelessWidget {
                                 ),
                               ),
                               IconButton(
-                                icon: const Icon(Icons.close,
-                                    color: Colors.white),
+                                icon: const Icon(Icons.close, color: Colors.white),
                                 onPressed: () {
                                   // Close or navigate away action
                                 },
@@ -66,8 +65,7 @@ class PlayingProfile extends StatelessWidget {
                           const SizedBox(height: 20),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: ['Beginner', 'Intermediate', 'Advance']
-                                .map((profile) {
+                            children: ['Beginner', 'Intermediate', 'Advance'].map((profile) {
                               return ChoiceChip(
                                 label: Text(profile),
                                 selected: selectedProfile == profile,
@@ -81,15 +79,12 @@ class PlayingProfile extends StatelessWidget {
                                 selectedColor: const Color(0xFFDAA520),
                                 backgroundColor: Colors.grey[800],
                                 labelStyle: TextStyle(
-                                  color: selectedProfile == profile
-                                      ? Colors.black
-                                      : Colors.white,
+                                  color: selectedProfile == profile ? Colors.black : Colors.white,
                                 ),
                                 side: const BorderSide(
                                   color: Colors.grey, // Border color
                                 ),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20)),
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                               );
                             }).toList(),
                           ),
@@ -105,21 +100,16 @@ class PlayingProfile extends StatelessWidget {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) =>
-                                                const Playing1(),
+                                            builder: (context) => const Playing1(),
                                           ));
                                     }
                                   : null,
                               style: ElevatedButton.styleFrom(
-                                foregroundColor: selectedProfile != null
-                                    ? Colors.black
-                                    : Colors.white.withOpacity(0.5),
-                                backgroundColor: selectedProfile != null
-                                    ? const Color(0xFFDAA520)
-                                    : Colors.grey.withOpacity(0.3),
+                                foregroundColor: selectedProfile != null ? Colors.black : Colors.white.withOpacity(0.5),
+                                backgroundColor:
+                                    selectedProfile != null ? const Color(0xFFDAA520) : Colors.grey.withOpacity(0.3),
                                 elevation: selectedProfile != null ? 5 : 0,
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 15, horizontal: 25),
+                                padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 ),

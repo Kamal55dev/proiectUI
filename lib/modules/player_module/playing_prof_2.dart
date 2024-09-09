@@ -10,8 +10,7 @@ class Playing_2 extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // Access the selected frequency from the provider
-    final selectedFrequency =
-        ref.watch(playingProfProvider2); // No casting needed
+    final selectedFrequency = ref.watch(playingProfProvider2); // No casting needed
 
     return Scaffold(
       backgroundColor: const Color(0xFF1C1C1E), // Dark background color
@@ -19,7 +18,7 @@ class Playing_2 extends ConsumerWidget {
         children: [
           Positioned.fill(
             child: Image.asset(
-              'assets/images/bg_images/Looper BG.png', // Background image path
+              'assets/images/bg_images/Looper Bg image.png', // Background image path
               fit: BoxFit.cover,
             ),
           ),
@@ -70,17 +69,13 @@ class Playing_2 extends ConsumerWidget {
                         onSelected: (isSelected) {
                           if (isSelected) {
                             // Update the selected frequency in the provider
-                            ref
-                                .read(playingProfProvider2.notifier)
-                                .selectFrequency(frequency);
+                            ref.read(playingProfProvider2.notifier).selectFrequency(frequency);
                           }
                         },
                         selectedColor: const Color(0xFFDAA520),
                         backgroundColor: Colors.grey[800],
                         labelStyle: TextStyle(
-                          color: selectedFrequency == frequency
-                              ? Colors.black
-                              : Colors.white,
+                          color: selectedFrequency == frequency ? Colors.black : Colors.white,
                         ),
                         side: const BorderSide(
                           color: Colors.grey, // Border color
@@ -127,26 +122,22 @@ class Playing_2 extends ConsumerWidget {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) =>
-                                          const PlayingProf_3(),
+                                      builder: (context) => const PlayingProf_3(),
                                     ));
                               }
                             : null,
                         label: const Text(
                           'Next',
-                          style: TextStyle(
-                              fontFamily: 'Poppins', color: Colors.white),
+                          style: TextStyle(fontFamily: 'Poppins', color: Colors.white),
                         ),
                         icon: const Icon(
                           Icons.arrow_forward,
                           color: Colors.white,
                         ),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: selectedFrequency != null
-                              ? const Color(0xFFDAA520)
-                              : Colors.grey.withOpacity(0.3),
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 15, horizontal: 25),
+                          backgroundColor:
+                              selectedFrequency != null ? const Color(0xFFDAA520) : Colors.grey.withOpacity(0.3),
+                          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),

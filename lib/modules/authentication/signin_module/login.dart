@@ -20,7 +20,7 @@ class Login extends ConsumerWidget {
             left: 0,
             right: 0,
             child: Image.asset(
-              'assets/images/bg_images/Looper BG.png',
+              'assets/images/bg_images/Looper Bg image.png',
               fit: BoxFit.cover,
             ),
           ),
@@ -44,20 +44,15 @@ class Login extends ConsumerWidget {
                 ElevatedButton(
                   onPressed: () => loginController.login(context),
                   style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 130, vertical: 15),
-                    backgroundColor:
-                        const Color.fromARGB(255, 218, 165, 32), // Gold color
+                    padding: const EdgeInsets.symmetric(horizontal: 130, vertical: 15),
+                    backgroundColor: const Color.fromARGB(255, 218, 165, 32), // Gold color
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
                   ),
                   child: const Text(
                     'Log in',
-                    style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
-                        fontFamily: 'Poppins'),
+                    style: TextStyle(fontSize: 18, color: Colors.white, fontFamily: 'Poppins'),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -71,8 +66,7 @@ class Login extends ConsumerWidget {
                       style: TextStyle(color: Colors.white),
                     ),
                     GestureDetector(
-                      onTap: () =>
-                          loginController.navigateToCreateAccount(context),
+                      onTap: () => loginController.navigateToCreateAccount(context),
                       child: const Text(
                         'Create Account',
                         style: TextStyle(

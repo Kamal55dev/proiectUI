@@ -17,7 +17,7 @@ class Playing1 extends ConsumerWidget {
         children: [
           Positioned.fill(
             child: Image.asset(
-              'assets/images/bg_images/Looper BG.png', // Background image
+              'assets/images/bg_images/Looper Bg image.png', // Background image
               fit: BoxFit.cover,
             ),
           ),
@@ -34,10 +34,7 @@ class Playing1 extends ConsumerWidget {
                       const Text(
                         'Playing Profile',
                         style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Poppins'),
+                            color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold, fontFamily: 'Poppins'),
                       ),
                       IconButton(
                         icon: const Icon(Icons.close, color: Colors.white),
@@ -66,17 +63,13 @@ class Playing1 extends ConsumerWidget {
                         selected: selectedFrequency == frequency,
                         onSelected: (isSelected) {
                           if (isSelected) {
-                            ref
-                                .read(playingProfileProvider.notifier)
-                                .updateFrequency(frequency);
+                            ref.read(playingProfileProvider.notifier).updateFrequency(frequency);
                           }
                         },
                         selectedColor: const Color(0xFFDAA520),
                         backgroundColor: Colors.grey[800],
                         labelStyle: TextStyle(
-                          color: selectedFrequency == frequency
-                              ? Colors.black
-                              : Colors.white,
+                          color: selectedFrequency == frequency ? Colors.black : Colors.white,
                         ),
                         side: const BorderSide(
                           color: Colors.grey, // Border color
@@ -101,15 +94,11 @@ class Playing1 extends ConsumerWidget {
                             }
                           : null,
                       style: ElevatedButton.styleFrom(
-                        foregroundColor: selectedFrequency != null
-                            ? Colors.black
-                            : Colors.white.withOpacity(0.5),
-                        backgroundColor: selectedFrequency != null
-                            ? const Color(0xFFDAA520)
-                            : Colors.grey.withOpacity(0.3),
+                        foregroundColor: selectedFrequency != null ? Colors.black : Colors.white.withOpacity(0.5),
+                        backgroundColor:
+                            selectedFrequency != null ? const Color(0xFFDAA520) : Colors.grey.withOpacity(0.3),
                         elevation: selectedFrequency != null ? 5 : 0,
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 15, horizontal: 25),
+                        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
