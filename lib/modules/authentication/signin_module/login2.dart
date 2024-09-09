@@ -18,7 +18,7 @@ class Login2 extends ConsumerWidget {
           Positioned.fill(
             top: 2,
             child: Image.asset(
-              'assets/images/Looper BG.png', // Replace with your background image asset
+              'assets/images/bg_images/Looper Bg image.png', // Replace with your background image asset
               fit: BoxFit.cover,
             ),
           ),
@@ -119,24 +119,21 @@ class Login2 extends ConsumerWidget {
                       children: [
                         // Google Icon
                         IconButton(
-                          icon: Image.asset(
-                              'assets/images/google.png'), // Replace with your asset
+                          icon: Image.asset('assets/images/google.png'), // Replace with your asset
                           iconSize: 40,
                           onPressed: loginController.signUpWithGoogle,
                         ),
                         const SizedBox(width: 20),
                         // Facebook Icon
                         IconButton(
-                          icon: Image.asset(
-                              'assets/images/fb.png'), // Replace with your asset
+                          icon: Image.asset('assets/images/fb.png'), // Replace with your asset
                           iconSize: 40,
                           onPressed: loginController.signUpWithFacebook,
                         ),
                         const SizedBox(width: 20),
                         // Apple Icon
                         IconButton(
-                          icon: Image.asset(
-                              'assets/images/ios.png'), // Replace with your asset
+                          icon: Image.asset('assets/images/ios.png'), // Replace with your asset
                           iconSize: 40,
                           onPressed: loginController.signUpWithApple,
                         ),

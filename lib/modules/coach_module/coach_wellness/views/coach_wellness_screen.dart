@@ -126,33 +126,6 @@ class CoachWellnessScreenState extends State<CoachWellnessScreen> {
                       ),
                     ),
                   ),
-
-                  // Container(
-                  //   decoration: BoxDecoration(
-                  //     border: Border.all(color: lightGrey),
-                  //     borderRadius: const BorderRadius.all(Radius.circular(14)),
-                  //     color: tileColor.withOpacity(0.25),
-                  //   ),
-                  //   child: Padding(
-                  //     padding: responsiveAllPadding(context, 0.04),
-                  //     child: Row(
-                  //       children: [
-                  //         Container(
-                  //           height: size.height * 0.014,
-                  //           width: size.width * 0.032,
-                  //           color: blue,
-                  //         ),
-                  //         kWidth(context, 0.02),
-                  //         CustomText(
-                  //           text: 'Team Name',
-                  //           color: white,
-                  //           fontSize: getResponsiveFontSize(context, 15),
-                  //           fontWeight: FontWeight.w500,
-                  //         )
-                  //       ],
-                  //     ),
-                  //   ),
-                  // ),
                   kHeight(context, 0.03),
                   Row(
                     children: [
@@ -203,30 +176,56 @@ class CoachWellnessScreenState extends State<CoachWellnessScreen> {
                         return Column(
                           children: [
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const CircleAvatar(
-                                  radius: 15,
-                                  backgroundImage: AssetImage('assets/images/icon_images/attendance icon.png'),
-                                ),
-                                kWidth(context, 0.02),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                Row(
                                   children: [
-                                    CustomText(
-                                      text: names[index],
-                                      color: white,
-                                      fontSize: getResponsiveFontSize(context, 12),
+                                    const CircleAvatar(
+                                      radius: 15,
+                                      backgroundImage: AssetImage('assets/images/icon_images/attendance icon.png'),
+                                    ),
+                                    kWidth(context, 0.02),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                      children: [
+                                        CustomText(
+                                          text: names[index],
+                                          color: white,
+                                          fontSize: getResponsiveFontSize(context, 12),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
+                                Row(
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(5),
+                                      child: SizedBox(
+                                        width: size.width * 0.23,
+                                        height: size.height * 0.01,
+                                        child: LinearProgressIndicator(
+                                          value: 0.1,
+                                          backgroundColor: Colors.grey.shade700,
+                                          color: red,
+                                        ),
+                                      ),
+                                    ),
+                                    const CustomText(
+                                      text: '40%',
+                                      color: white,
+                                    )
+                                  ],
+                                )
                               ],
                             ),
+                            kHeight(context, 0.005),
                             const Divider(
                               color: grey,
                               thickness: 0.4,
                             ),
-                            kHeight(context, 0.02),
+                            kHeight(context, 0.022),
                           ],
                         );
                       },

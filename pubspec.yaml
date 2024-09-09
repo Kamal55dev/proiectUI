@@ -68,6 +68,7 @@ flutter:
     - assets/images/bg_images/
     - assets/images/coach_images/
     - assets/images/profile_image/
+    - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

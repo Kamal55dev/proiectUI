@@ -297,7 +297,7 @@ class Signup extends ConsumerWidget {
           // Background Image
           Positioned.fill(
             child: Image.asset(
-              'assets/images/Looper BG.png',
+              'assets/images/bg_images/Looper Bg image.png',
               fit: BoxFit.cover,
             ),
           ),
@@ -343,8 +343,7 @@ class Signup extends ConsumerWidget {
 
                     // Full Name Field
                     TextField(
-                      onChanged: (value) =>
-                          signupController.updateFullName(value),
+                      onChanged: (value) => signupController.updateFullName(value),
                       style: const TextStyle(color: Colors.white),
                       decoration: InputDecoration(
                         hintText: 'Full Name',
@@ -361,13 +360,11 @@ class Signup extends ConsumerWidget {
 
                     // Country Field
                     TextField(
-                      onChanged: (value) =>
-                          signupController.updateCountry(value),
+                      onChanged: (value) => signupController.updateCountry(value),
                       style: const TextStyle(color: Colors.white),
                       decoration: InputDecoration(
                         hintText: 'Country',
-                        suffixIcon:
-                            const Icon(Icons.location_on, color: Colors.white),
+                        suffixIcon: const Icon(Icons.location_on, color: Colors.white),
                         hintStyle: const TextStyle(color: Colors.white70),
                         filled: true,
                         fillColor: Colors.grey[850],
@@ -404,8 +401,7 @@ class Signup extends ConsumerWidget {
                       ),
                       child: InternationalPhoneNumberInput(
                         onInputChanged: (PhoneNumber number) {
-                          signupController
-                              .updateMobileNumber(number.phoneNumber ?? '');
+                          signupController.updateMobileNumber(number.phoneNumber ?? '');
                         },
                         initialValue: PhoneNumber(isoCode: 'US'),
                         formatInput: true,
@@ -414,8 +410,7 @@ class Signup extends ConsumerWidget {
                           showFlags: true,
                           useEmoji: true,
                         ),
-                        textFieldController:
-                            signupController.mobileNumberController,
+                        textFieldController: signupController.mobileNumberController,
                         inputDecoration: InputDecoration(
                           hintText: 'Mobile Number',
                           hintStyle: const TextStyle(color: Colors.white70),
@@ -425,8 +420,7 @@ class Signup extends ConsumerWidget {
                             borderRadius: BorderRadius.circular(10),
                             borderSide: BorderSide.none,
                           ),
-                          contentPadding:
-                              const EdgeInsets.symmetric(horizontal: 15),
+                          contentPadding: const EdgeInsets.symmetric(horizontal: 15),
                         ),
                         onSaved: (PhoneNumber number) {},
                       ),
@@ -458,8 +452,7 @@ class Signup extends ConsumerWidget {
                         );
 
                         if (pickedDate != null) {
-                          String formattedDate =
-                              DateFormat('yyyy-MM-dd').format(pickedDate);
+                          String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
                           signupController.updateDateOfBirth(formattedDate);
                         }
                       },
@@ -473,13 +466,10 @@ class Signup extends ConsumerWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              signupController.dateOfBirth.isEmpty
-                                  ? 'Date of Birth'
-                                  : signupController.dateOfBirth,
+                              signupController.dateOfBirth.isEmpty ? 'Date of Birth' : signupController.dateOfBirth,
                               style: const TextStyle(color: Colors.white70),
                             ),
-                            const Icon(Icons.calendar_today,
-                                color: Colors.white70),
+                            const Icon(Icons.calendar_today, color: Colors.white70),
                           ],
                         ),
                       ),

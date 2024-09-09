@@ -17,7 +17,7 @@ class UserProfile extends StatelessWidget {
             // Background Image
             Positioned.fill(
               child: Image.asset(
-                'assets/images/Looper BG.png',
+                'assets/images/bg_images/Looper Bg image.png',
                 fit: BoxFit.cover,
               ),
             ),
@@ -46,8 +46,7 @@ class UserProfile extends StatelessWidget {
                               ),
                             ),
                             IconButton(
-                              icon:
-                                  const Icon(Icons.close, color: Colors.white),
+                              icon: const Icon(Icons.close, color: Colors.white),
                               onPressed: () {
                                 // Close or navigate away action
                               },
@@ -102,12 +101,9 @@ class UserProfile extends StatelessWidget {
                               selectedColor: const Color(0xFFDAA520),
                               backgroundColor: Colors.grey[800],
                               labelStyle: TextStyle(
-                                color: selectedProfile == profile
-                                    ? Colors.black
-                                    : Colors.white,
+                                color: selectedProfile == profile ? Colors.black : Colors.white,
                               ),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20)),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                             );
                           }).toList(),
                         ),
@@ -139,23 +135,17 @@ class UserProfile extends StatelessWidget {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) =>
-                                              const UserProfile_1(),
+                                          builder: (context) => const UserProfile_1(),
                                         ));
                                   }
                                 : null, // Disable the button's functionality if no profile selected
                             style: ElevatedButton.styleFrom(
-                              foregroundColor: selectedProfile != null
-                                  ? Colors.black
-                                  : Colors.black.withOpacity(0.5),
+                              foregroundColor: selectedProfile != null ? Colors.black : Colors.black.withOpacity(0.5),
                               backgroundColor: selectedProfile != null
-                                  ? const Color(
-                                      0xFFDAA520) // Gold color when enabled
-                                  : Colors.grey.withOpacity(
-                                      0.3), // More transparent grey when disabled
+                                  ? const Color(0xFFDAA520) // Gold color when enabled
+                                  : Colors.grey.withOpacity(0.3), // More transparent grey when disabled
                               elevation: selectedProfile != null ? 5 : 0,
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 15, horizontal: 25),
+                              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),

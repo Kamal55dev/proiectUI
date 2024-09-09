@@ -32,47 +32,44 @@ class CoachTeamScreen extends ConsumerWidget {
       },
     ];
     return SafeArea(
-      child: Scaffold(
-        backgroundColor: bgColor,
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: responsiveAllPadding(context, 0.03),
-                child: Column(
+        child: Scaffold(
+      backgroundColor: bgColor,
+      body: SingleChildScrollView(
+        child: Column(children: [
+          Padding(
+              padding: responsiveAllPadding(context, 0.03),
+              child: Column(children: [
+                CustomAppbar(
+                  "assets/images/icon_images/Action Icons.png",
+                  onTap: () {},
+                  leadingIcon: Icons.arrow_back_rounded,
+                  title: "Teams",
+                ),
+                Stack(
                   children: [
-                    CustomAppbar(
-                      "assets/images/icon_images/Action Icons.png",
-                      onTap: () {},
-                      leadingIcon: Icons.arrow_back_rounded,
-                      title: "Teams",
-                    ),
-                    Stack(
-                      children: [
-                        ClipRect(
-                          child: Align(
-                            alignment: Alignment.topLeft,
-                            heightFactor: 0.9,
-                            widthFactor: 0.9,
-                            child: SizedBox(
-                              height: size.height * 0.4,
-                              width: double.infinity,
-                              child: Image.asset(
-                                'assets/images/bg_images/Looper BG.png',
-                                fit: BoxFit.cover,
-                              ),
-                            ),
+                    Positioned(
+                      right: 16,
+                      bottom: 0,
+                      child: Container(
+                        height: size.height * 0.3,
+                        width: size.width * 0.3,
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/coach_images/Ellipse 63.png'),
                           ),
                         ),
-                        Padding(
-                          padding: responsiveAllPadding(context, 0.03),
-                          child: Row(
+                      ),
+                    ),
+                    Padding(
+                      padding: responsiveAllPadding(context, 0.03),
+                      child: Column(children: [
+                        Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               SizedBox(
-                                height: size.height * 0.08,
-                                width: size.width * 0.5,
+                                height: size.height * 0.14,
+                                width: size.width * 0.55,
                                 child: CustomText(
                                   text: 'Super Smash Badminton Aca...',
                                   color: white,
@@ -81,55 +78,45 @@ class CoachTeamScreen extends ConsumerWidget {
                                   maxline: 2,
                                 ),
                               ),
-                              ClipRect(
-                                child: Align(
-                                  alignment: Alignment.bottomRight,
-                                  heightFactor: 1,
-                                  child: Container(
-                                    height: size.height * 0.22,
-                                    width: size.width * 0.3,
-                                    decoration: const BoxDecoration(
-                                      image: DecorationImage(
-                                        image: AssetImage('assets/images/coach_images/Ellipse 63.png'),
-                                      ),
-                                    ),
-                                    child: Center(
-                                      child: Image.asset(
-                                        'assets/images/coach_images/star-dynamic-premium.png',
-                                      ),
-                                    ),
-                                  ),
+                              Expanded(
+                                  child: Align(
+                                alignment: Alignment.centerRight,
+                                child: Image.asset(
+                                  'assets/images/coach_images/star-dynamic-premium.png',
+                                  height: size.height * 0.25,
+                                  width: size.width * 0.3,
                                 ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Positioned(
-                          bottom: 45,
-                          left: 15,
-                          child: CustomText(
-                            text: 'My Teams',
-                            color: white,
-                            fontSize: getResponsiveFontSize(context, 13),
-                          ),
-                        )
-                      ],
+                              ))
+                            ]),
+                      ]),
                     ),
-                    Padding(
-                      padding: responsiveSidePadding(context, leftFactor: 0.02, rightFactor: 0.02),
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: teamsData.length,
-                        itemBuilder: (context, index) {
-                          final team = teamsData[index];
-                          return InkWell(
-                            onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const CoachOverviewScreen(),
-                              ));
-                            },
-                            child: Container(
+                    Positioned(
+                      bottom: 1,
+                      left: 15,
+                      child: CustomText(
+                        text: 'My Teams',
+                        color: white,
+                        fontSize: getResponsiveFontSize(context, 13),
+                      ),
+                    )
+                  ],
+                ),
+                kHeight(context, 0.01),
+                Padding(
+                  padding: responsiveSidePadding(context, leftFactor: 0.02, rightFactor: 0.02),
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: teamsData.length,
+                    itemBuilder: (context, index) {
+                      final team = teamsData[index];
+                      return InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const CoachOverviewScreen(),
+                            ));
+                          },
+                          child: Container(
                               margin: const EdgeInsets.symmetric(vertical: 8.0),
                               height: size.height * 0.15,
                               width: double.infinity,
@@ -139,9 +126,8 @@ class CoachTeamScreen extends ConsumerWidget {
                                 color: tileColor.withOpacity(0.25),
                               ),
                               child: Padding(
-                                padding: responsiveAllPadding(context, 0.03),
-                                child: Column(
-                                  children: [
+                                  padding: responsiveAllPadding(context, 0.03),
+                                  child: Column(children: [
                                     Row(
                                       children: [
                                         const CircleAvatar(
@@ -173,42 +159,31 @@ class CoachTeamScreen extends ConsumerWidget {
                                       color: lightGrey,
                                       thickness: 0.5,
                                     ),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        Icon(
-                                          Icons.calendar_today_rounded,
-                                          color: const Color(0xFF3DD598),
-                                          size: getResponsiveFontSize(context, 18),
-                                        ),
-                                        kWidth(context, 0.01),
-                                        const CustomText(
-                                          text: "Today : ",
-                                          color: grey,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                        CustomText(
-                                          text: team['todayCount'],
-                                          color: white,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
+                                    Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                                      Icon(
+                                        Icons.calendar_today_rounded,
+                                        color: const Color(0xFF3DD598),
+                                        size: getResponsiveFontSize(context, 18),
+                                      ),
+                                      kWidth(context, 0.01),
+                                      const CustomText(
+                                        text: "Today : ",
+                                        color: grey,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                      CustomText(
+                                        text: team['todayCount'],
+                                        color: white,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ])
+                                  ]))));
+                    },
+                  ),
+                )
+              ]))
+        ]),
       ),
-    );
+    ));
   }
 }
