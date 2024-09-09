@@ -11,7 +11,7 @@ EdgeInsets responsivePadding(BuildContext context, {double horizontalFactor = 0.
 
 // Another helper function to calculate specific side padding
 EdgeInsets responsiveSidePadding(BuildContext context,
-    {double leftFactor = 0.04, double rightFactor = 0.04, double topFactor = 0.02, double bottomFactor = 0.02}) {
+    {double leftFactor = 0.0, double rightFactor = 0.0, double topFactor = 0.0, double bottomFactor = 0.0}) {
   final screenWidth = MediaQuery.of(context).size.width;
   return EdgeInsets.only(
     left: screenWidth * leftFactor,
