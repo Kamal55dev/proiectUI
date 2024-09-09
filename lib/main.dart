@@ -1,4 +1,5 @@
 import 'package:badminton/modules/orientation_module/orientation_home/orientation_home_screen.dart';
+import 'package:badminton/modules/orientation_module/orientation_request_lists/views/requester_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       //   textOne: 'Request Sent',
       //   textTwo: 'Successfully',
       // ),
-      home: const OrientationHome(),
+      home: const RequesterList(),
       // theme: ThemeData.dark(),
       // initialRoute: '/PlayerDashboard',
       // routes: {
