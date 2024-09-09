@@ -37,7 +37,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
           // Background image
           Positioned.fill(
             child: Image.asset(
-              'assets/images/Looper BG.png', // Replace with your background image asset path
+              'assets/images/bg_images/Looper BG.png', // Replace with your background image asset path
               fit: BoxFit.cover,
             ),
           ),

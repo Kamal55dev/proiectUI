@@ -18,7 +18,7 @@ class Login2 extends ConsumerWidget {
           Positioned.fill(
             top: 2,
             child: Image.asset(
-              'assets/images/Looper BG.png', // Replace with your background image asset
+              'assets/images/bg_images/Looper BG.png', // Replace with your background image asset
               fit: BoxFit.cover,
             ),
           ),

@@ -17,7 +17,7 @@ class Playing1 extends ConsumerWidget {
         children: [
           Positioned.fill(
             child: Image.asset(
-              'assets/images/Looper BG.png', // Background image
+              'assets/images/bg_images/Looper BG.png', // Background image
               fit: BoxFit.cover,
             ),
           ),
