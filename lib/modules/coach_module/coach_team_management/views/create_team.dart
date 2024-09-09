@@ -118,7 +118,7 @@ class _CreateTeamScreenTwoState extends ConsumerState<CreateTeamScreenTwo> {
                     textCapitalizationEnabled: false,
                     readOnly: false,
                     length: 50,
-                    validator: validateteamName,
+                    // validator: validateteamName,
                   ),
                 ],
               ),

@@ -20,7 +20,7 @@ class PlayingProf_3 extends ConsumerWidget {
           // Background Image
           Positioned.fill(
             child: Image.asset(
-              'assets/images/Looper BG.png', // Background image path
+              'assets/images/bg_images/Looper BG.png', // Background image path
               fit: BoxFit.cover, // Ensures the image covers the whole screen
             ),
           ),

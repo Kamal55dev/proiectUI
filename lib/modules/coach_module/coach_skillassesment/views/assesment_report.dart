@@ -1,3 +1,4 @@
+import 'package:badminton/common/common_button.dart';
 import 'package:badminton/common/common_font_size.dart';
 import 'package:badminton/common/common_text.dart';
 import 'package:badminton/core/utils/colors.dart';
@@ -172,12 +173,13 @@ class AssesmentReportScreen extends ConsumerWidget {
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Padding(
-                                            padding: const EdgeInsets.all(16.0),
+                                            padding: EdgeInsets.all(16.0),
                                             child: Text(
                                               'Add Comment',
                                               style: TextStyle(
                                                 color: Colors.white,
-                                                fontSize: 20,
+                                                fontSize: getResponsiveFontSize(
+                                                    context, 14),
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             ),
@@ -186,7 +188,6 @@ class AssesmentReportScreen extends ConsumerWidget {
                                             padding: const EdgeInsets.symmetric(
                                                 horizontal: 16.0),
                                             child: TextFormField(
-                                              
                                               onChanged: (value) {
                                                 enteredComment = value;
                                               },
@@ -206,10 +207,9 @@ class AssesmentReportScreen extends ConsumerWidget {
                                                     color: Colors.white,
                                                   ),
                                                 ),
-                                                hintText:'Comments' ,
-                                                hintStyle:const TextStyle(
-                                                    color:grey) ,
-                                               
+                                                hintText: 'Comments',
+                                                hintStyle: const TextStyle(
+                                                    color: grey),
                                                 border: OutlineInputBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(15),
@@ -231,7 +231,6 @@ class AssesmentReportScreen extends ConsumerWidget {
                                                   const TextStyle(color: white),
                                             ),
                                           ),
-                                         
                                         ],
                                       ),
                                     ),
@@ -306,6 +305,79 @@ class AssesmentReportScreen extends ConsumerWidget {
                     );
                   },
                 ),
+              ),
+              Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    color: boxColor,
+                    border: Border.all(color: grey),
+                    borderRadius: BorderRadius.circular(10)),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: kheight * 0.015,
+                    ),
+                    CustomButton(
+                      borderColor: primaryColor,
+                      text: 'Overall Rating',
+                      textSize: getResponsiveFontSize(context, 12),
+                      textColor: white,
+                      backgroundColor: Colors.transparent,
+                      borderRadius: 20.0,
+                      height: MediaQuery.of(context).size.height * 0.04,
+                      width: kwidth * 0.3,
+                      onPress: () {},
+                    ),
+                    SizedBox(
+                      height: kheight * 0.015,
+                    ),
+                    CustomText(
+                      text: '-.-',
+                      color: white,
+                      fontSize: getResponsiveFontSize(context, 16),
+                      fontWeight: FontWeight.w800,
+                    ),
+                    CustomText(
+                      text: 'Stars',
+                      color: white,
+                      fontSize: getResponsiveFontSize(context, 14),
+                      fontWeight: FontWeight.w600,
+                    ),
+                    SizedBox(
+                      height: kheight * 0.015,
+                    ),
+                    Row(
+mainAxisAlignment: MainAxisAlignment.center,                      children: [
+                        Icon(
+                          Icons.add_comment_outlined,
+                          color: grey,
+                          size: kwidth * 0.06,
+                        ),
+                        SizedBox(width: kwidth * 0.01),
+                        CustomText(
+                          text: 'Add Comments',
+                          color: grey,
+                          fontSize: getResponsiveFontSize(context, 14),
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: kheight * 0.02,
+              ),
+              CustomButton(
+                borderColor: grey,
+                text: 'Submit',
+                textSize: getResponsiveFontSize(context, 14),
+                textColor: grey,
+                backgroundColor: Colors.transparent,
+                borderRadius: 20.0,
+                height: MediaQuery.of(context).size.height * 0.07,
+                width: double.infinity,
+                onPress: () {},
               ),
             ],
           ),

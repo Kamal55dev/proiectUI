@@ -19,7 +19,7 @@ class PlayingProfile extends StatelessWidget {
             children: [
               Positioned.fill(
                 child: Image.asset(
-                  'assets/images/Looper BG.png', // Replace with your background image path
+                  'assets/images/bg_images/Looper BG.png', // Replace with your background image path
                   fit: BoxFit.cover,
                   // color: Colors.transparent.withOpacity(0.5),
                 ),
