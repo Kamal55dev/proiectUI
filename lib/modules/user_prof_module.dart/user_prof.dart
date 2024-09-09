@@ -1,7 +1,7 @@
-import 'package:badminton/modules/player_module/playing_prof.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../controllers/user_prof_provider/user_prof_provider.dart';
+import 'user_profile_1.dart';
 
 class UserProfile extends StatelessWidget {
   const UserProfile({super.key});
@@ -140,7 +140,7 @@ class UserProfile extends StatelessWidget {
                                         context,
                                         MaterialPageRoute(
                                           builder: (context) =>
-                                              PlayingProfile(),
+                                              const UserProfile_1(),
                                         ));
                                   }
                                 : null, // Disable the button's functionality if no profile selected
@@ -160,15 +160,15 @@ class UserProfile extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
-                            child: Row(
+                            child: const Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                const Text(
+                                Text(
                                   'Next',
                                   style: TextStyle(fontSize: 16),
                                 ),
-                                const SizedBox(width: 8),
-                                const Icon(
+                                SizedBox(width: 8),
+                                Icon(
                                   Icons.arrow_forward,
                                   size: 20,
                                 ),

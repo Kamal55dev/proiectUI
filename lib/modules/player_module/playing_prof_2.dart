@@ -103,8 +103,8 @@ class Playing_2 extends ConsumerWidget {
                           // Handle Previous button action
                           Navigator.pop(context);
                         },
-                        child: Row(
-                          children: const [
+                        child: const Row(
+                          children: [
                             Icon(
                               Icons.arrow_back,
                               color: Colors.white,
@@ -127,7 +127,8 @@ class Playing_2 extends ConsumerWidget {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => PlayingProf_3(),
+                                      builder: (context) =>
+                                          const PlayingProf_3(),
                                     ));
                               }
                             : null,

@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 enum GameType { singles, doubles, both }
 
 // StateNotifier to manage the selected game type
+// ignore: camel_case_types
 class PlayingProfController_3 extends StateNotifier<GameType?> {
   PlayingProfController_3() : super(null); // Initial state is no selection
 

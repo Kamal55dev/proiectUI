@@ -105,7 +105,8 @@ class PlayingProfile extends StatelessWidget {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) => Playing1(),
+                                            builder: (context) =>
+                                                const Playing1(),
                                           ));
                                     }
                                   : null,

@@ -47,7 +47,7 @@ class Login extends ConsumerWidget {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 130, vertical: 15),
                     backgroundColor:
-                        Color.fromARGB(255, 218, 165, 32), // Gold color
+                        const Color.fromARGB(255, 218, 165, 32), // Gold color
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),

@@ -20,6 +20,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     ref.read(splashScreenControllerProvider).init().then((_) {
       //Navigate to home screen or appropriate screen
       Navigator.push(
+          // ignore: use_build_context_synchronously
           context,
           MaterialPageRoute(
             builder: (context) => const Login(),

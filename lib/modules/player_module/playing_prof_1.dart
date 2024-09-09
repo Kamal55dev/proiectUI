@@ -96,7 +96,7 @@ class Playing1 extends ConsumerWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => Playing_2(),
+                                    builder: (context) => const Playing_2(),
                                   ));
                             }
                           : null,

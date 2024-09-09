@@ -1,9 +1,13 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../controllers/player_prof_provider/player_prof_provider_3.dart';
 
+// ignore: camel_case_types
 class PlayingProf_3 extends ConsumerWidget {
+  const PlayingProf_3({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // Watch the selected game type state from the controller
@@ -96,7 +100,9 @@ class PlayingProf_3 extends ConsumerWidget {
                       onPressed: selectedGameType != null
                           ? () {
                               // Handle the finish action
-                              print("Selected Game Type: $selectedGameType");
+                              if (kDebugMode) {
+                                print("Selected Game Type: $selectedGameType");
+                              }
                             }
                           : null,
                       style: ElevatedButton.styleFrom(

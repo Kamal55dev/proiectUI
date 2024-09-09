@@ -9,6 +9,7 @@ class OtpScreen extends ConsumerStatefulWidget {
   const OtpScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _OtpState createState() => _OtpState();
 }
 
