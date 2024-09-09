@@ -7,7 +7,8 @@ class CustomText extends StatelessWidget {
   final FontWeight? fontWeight;
   final TextOverflow? overflow;
   final TextAlign? textAlign;
-  final double? lineHeight; // Ensure this has a default value to avoid null issues
+  final double?
+      lineHeight; // Ensure this has a default value to avoid null issues
   final TextDecoration? decoration;
   final int? maxline;
 
