@@ -54,7 +54,8 @@ class CustomDropdown extends StatelessWidget {
         border: Border.all(color: borderColor ?? Colors.black.withOpacity(0.1)),
       ),
       child: DropdownButtonFormField<String>(
-        dropdownColor: black,
+        dropdownColor: white,
+        focusColor: white,
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           border: InputBorder.none,

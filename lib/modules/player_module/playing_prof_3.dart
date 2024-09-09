@@ -20,7 +20,7 @@ class PlayingProf_3 extends ConsumerWidget {
           // Background Image
           Positioned.fill(
             child: Image.asset(
-              'assets/images/bg_images/Looper BG.png', // Background image path
+              'assets/images/bg_images/Looper Bg image.png', // Background image path
               fit: BoxFit.cover, // Ensures the image covers the whole screen
             ),
           ),
@@ -39,10 +39,7 @@ class PlayingProf_3 extends ConsumerWidget {
                       const Text(
                         'Playing Profile',
                         style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Poppins'),
+                            color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold, fontFamily: 'Poppins'),
                       ),
                       IconButton(
                         icon: const Icon(Icons.close, color: Colors.white),
@@ -75,9 +72,7 @@ class PlayingProf_3 extends ConsumerWidget {
                         selected: selectedGameType == type,
                         onSelected: (isSelected) {
                           // Update the selected game type using the controller
-                          ref
-                              .read(playingProfileControllerProvider.notifier)
-                              .selectGameType(isSelected ? type : null);
+                          ref.read(playingProfileControllerProvider.notifier).selectGameType(isSelected ? type : null);
                         },
                         selectedColor: const Color(0xFFDAA520),
                         backgroundColor: Colors.grey[800],
@@ -106,15 +101,11 @@ class PlayingProf_3 extends ConsumerWidget {
                             }
                           : null,
                       style: ElevatedButton.styleFrom(
-                        foregroundColor: selectedGameType != null
-                            ? Colors.black
-                            : Colors.white.withOpacity(0.5),
-                        backgroundColor: selectedGameType != null
-                            ? const Color(0xFFDAA520)
-                            : Colors.grey.withOpacity(0.3),
+                        foregroundColor: selectedGameType != null ? Colors.black : Colors.white.withOpacity(0.5),
+                        backgroundColor:
+                            selectedGameType != null ? const Color(0xFFDAA520) : Colors.grey.withOpacity(0.3),
                         elevation: selectedGameType != null ? 5 : 0,
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 15, horizontal: 25),
+                        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
