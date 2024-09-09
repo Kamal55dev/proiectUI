@@ -10,3 +10,4 @@ const red = Colors.red;
 const blue = Colors.blue;
 final darkBlue = Colors.blue[900]!;
 const lightGrey = Color.fromARGB(255, 87, 85, 85);
+const bgColor = Color.fromRGBO(33, 38, 32, 1.0);
