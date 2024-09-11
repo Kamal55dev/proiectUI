@@ -50,10 +50,16 @@ class _OtpState extends ConsumerState<OtpScreen> {
       body: Stack(
         children: [
           // Background Image
-          Positioned.fill(
+          Positioned(
+            top: 20,
+            left: 0,
+            right: 0,
             child: Image.asset(
-              'assets/images/bg_images/Looper Bg image.png', // Replace with your background image asset
-              fit: BoxFit.cover,
+              'assets/images/bg_images/Looper BG.png', // Background image path
+              fit: BoxFit
+                  .cover, // Ensures the image covers the top of the screen
+              height: MediaQuery.of(context).size.height *
+                  0.4, // Adjust height as needed
             ),
           ),
           // Content
@@ -65,7 +71,8 @@ class _OtpState extends ConsumerState<OtpScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    const SizedBox(height: 60), // Space for the background to show
+                    const SizedBox(
+                        height: 60), // Space for the background to show
 
                     // Logo
                     Image.asset(
@@ -98,7 +105,8 @@ class _OtpState extends ConsumerState<OtpScreen> {
                     // OTP Input Section
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: List.generate(4, (index) => _otpBox(ref, index, otp)),
+                      children:
+                          List.generate(4, (index) => _otpBox(ref, index, otp)),
                     ),
                     const SizedBox(height: 50),
 
@@ -202,7 +210,8 @@ class _OtpState extends ConsumerState<OtpScreen> {
         onChanged: (value) {
           // Update the OTP in provider
           if (value.length == 1) {
-            ref.read(otpProvider.notifier).state = ref.read(otpProvider.notifier).state + value;
+            ref.read(otpProvider.notifier).state =
+                ref.read(otpProvider.notifier).state + value;
           }
         },
         textAlign: TextAlign.center,
