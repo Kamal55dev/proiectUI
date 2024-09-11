@@ -1,10 +1,7 @@
-import 'dart:developer';
-
 import 'package:badminton/modules/authentication/controllers/sign_up_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart'; // For DateFormat
-import 'package:intl_phone_number_input/intl_phone_number_input.dart'; // For InternationalPhoneNumberInput
 import '../signin_module/login.dart';
 
 class Signup extends ConsumerStatefulWidget {

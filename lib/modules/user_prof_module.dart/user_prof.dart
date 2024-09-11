@@ -1,3 +1,5 @@
+import 'package:badminton/modules/coach_module/coach_profile/views/coach_profilescreen.dart';
+import 'package:badminton/modules/player_module/playing_prof_1.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../controllers/user_prof_provider/user_prof_provider.dart';
@@ -10,8 +12,7 @@ class UserProfile extends StatefulWidget {
   _UserProfileState createState() => _UserProfileState();
 }
 
-class _UserProfileState extends State<UserProfile>
-    with SingleTickerProviderStateMixin {
+class _UserProfileState extends State<UserProfile> with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _fadeAnimationCoach;
   late Animation<double> _fadeAnimationPlayer;
@@ -99,8 +100,7 @@ class _UserProfileState extends State<UserProfile>
                     padding: const EdgeInsets.symmetric(horizontal: 24.0),
                     child: Consumer<ProfileController>(
                       builder: (context, profileController, child) {
-                        final selectedProfile =
-                            profileController.selectedProfile;
+                        final selectedProfile = profileController.selectedProfile;
 
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -119,8 +119,7 @@ class _UserProfileState extends State<UserProfile>
                                   ),
                                 ),
                                 IconButton(
-                                  icon: const Icon(Icons.close,
-                                      color: Colors.white),
+                                  icon: const Icon(Icons.close, color: Colors.white),
                                   onPressed: () {
                                     // Close or navigate away action
                                   },
@@ -173,8 +172,10 @@ class _UserProfileState extends State<UserProfile>
                                       selected: selectedProfile == 'Coach',
                                       onSelected: (isSelected) {
                                         if (isSelected) {
-                                          profileController
-                                              .selectProfile('Coach');
+                                          profileController.selectProfile('Coach');
+                                          // Navigator.of(context).push(MaterialPageRoute(
+                                          //   builder: (context) => CoachProfile(),
+                                          // ));
                                         } else {
                                           profileController.clearProfile();
                                         }
@@ -182,13 +183,9 @@ class _UserProfileState extends State<UserProfile>
                                       selectedColor: const Color(0xFFDAA520),
                                       backgroundColor: Colors.grey[800],
                                       labelStyle: TextStyle(
-                                        color: selectedProfile == 'Coach'
-                                            ? Colors.black
-                                            : Colors.white,
+                                        color: selectedProfile == 'Coach' ? Colors.black : Colors.white,
                                       ),
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20)),
+                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                                     ),
                                   ),
                                 ),
@@ -200,8 +197,10 @@ class _UserProfileState extends State<UserProfile>
                                       selected: selectedProfile == 'Player',
                                       onSelected: (isSelected) {
                                         if (isSelected) {
-                                          profileController
-                                              .selectProfile('Player');
+                                          profileController.selectProfile('Player');
+                                          // Navigator.of(context).push(MaterialPageRoute(
+                                          //   builder: (context) => Playing1(),
+                                          // ));
                                         } else {
                                           profileController.clearProfile();
                                         }
@@ -209,13 +208,9 @@ class _UserProfileState extends State<UserProfile>
                                       selectedColor: const Color(0xFFDAA520),
                                       backgroundColor: Colors.grey[800],
                                       labelStyle: TextStyle(
-                                        color: selectedProfile == 'Player'
-                                            ? Colors.black
-                                            : Colors.white,
+                                        color: selectedProfile == 'Player' ? Colors.black : Colors.white,
                                       ),
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20)),
+                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                                     ),
                                   ),
                                 ),
@@ -227,8 +222,7 @@ class _UserProfileState extends State<UserProfile>
                                       selected: selectedProfile == 'Fan',
                                       onSelected: (isSelected) {
                                         if (isSelected) {
-                                          profileController
-                                              .selectProfile('Fan');
+                                          profileController.selectProfile('Fan');
                                         } else {
                                           profileController.clearProfile();
                                         }
@@ -236,13 +230,9 @@ class _UserProfileState extends State<UserProfile>
                                       selectedColor: const Color(0xFFDAA520),
                                       backgroundColor: Colors.grey[800],
                                       labelStyle: TextStyle(
-                                        color: selectedProfile == 'Fan'
-                                            ? Colors.black
-                                            : Colors.white,
+                                        color: selectedProfile == 'Fan' ? Colors.black : Colors.white,
                                       ),
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20)),
+                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                                     ),
                                   ),
                                 ),
@@ -253,8 +243,7 @@ class _UserProfileState extends State<UserProfile>
                             // Note
                             const Row(
                               children: [
-                                Icon(Icons.info,
-                                    color: Colors.white54, size: 20),
+                                Icon(Icons.info, color: Colors.white54, size: 20),
                                 SizedBox(width: 8),
                                 Expanded(
                                   child: Text(
@@ -277,22 +266,18 @@ class _UserProfileState extends State<UserProfile>
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) =>
-                                                const UserProfile_1(),
+                                            builder: (context) => const UserProfile_1(),
                                           ),
                                         );
                                       }
                                     : null,
                                 style: ElevatedButton.styleFrom(
-                                  foregroundColor: selectedProfile != null
-                                      ? Colors.black
-                                      : Colors.black.withOpacity(0.5),
-                                  backgroundColor: selectedProfile != null
-                                      ? const Color(0xFFDAA520)
-                                      : Colors.grey.withOpacity(0.3),
+                                  foregroundColor:
+                                      selectedProfile != null ? Colors.black : Colors.black.withOpacity(0.5),
+                                  backgroundColor:
+                                      selectedProfile != null ? const Color(0xFFDAA520) : Colors.grey.withOpacity(0.3),
                                   elevation: selectedProfile != null ? 5 : 0,
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 15, horizontal: 25),
+                                  padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10),
                                   ),

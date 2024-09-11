@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../controllers/auth_controllers/signin_providers/l2_provider.dart';
+import '../../controllers/auth_controllers/signin_providers/login_provider.dart';
 
 class Login2 extends ConsumerWidget {
   const Login2({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // final loginController = ref.watch(loginControllerProvider);
     final loginController = ref.watch(loginControllerProvider);
 
     return Scaffold(
@@ -35,14 +36,11 @@ class Login2 extends ConsumerWidget {
               SingleChildScrollView(
                 child: Center(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: screenWidth * 0.06), // 6% of screen width
+                    padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.06), // 6% of screen width
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SizedBox(
-                            height: screenHeight *
-                                0.1), // Spacer proportional to screen height
+                        SizedBox(height: screenHeight * 0.1), // Spacer proportional to screen height
 
                         // Logo
                         Image.asset(
@@ -50,9 +48,7 @@ class Login2 extends ConsumerWidget {
                           width: screenWidth * 0.25, // 25% of screen width
                           height: screenWidth * 0.25, // Maintain aspect ratio
                         ),
-                        SizedBox(
-                            height: screenHeight *
-                                0.1), // Spacer proportional to screen height
+                        SizedBox(height: screenHeight * 0.1), // Spacer proportional to screen height
 
                         // Login Text
                         const Text(
@@ -63,9 +59,7 @@ class Login2 extends ConsumerWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(
-                            height: screenHeight *
-                                0.02), // Spacer proportional to screen height
+                        SizedBox(height: screenHeight * 0.02), // Spacer proportional to screen height
 
                         // Subtitle Text
                         const Text(
@@ -76,9 +70,7 @@ class Login2 extends ConsumerWidget {
                           ),
                           textAlign: TextAlign.center,
                         ),
-                        SizedBox(
-                            height: screenHeight *
-                                0.04), // Spacer proportional to screen height
+                        SizedBox(height: screenHeight * 0.04), // Spacer proportional to screen height
 
                         // Email or Mobile Input Field
                         TextField(
@@ -95,54 +87,44 @@ class Login2 extends ConsumerWidget {
                             ),
                           ),
                         ),
-                        SizedBox(
-                            height: screenHeight *
-                                0.03), // Spacer proportional to screen height
+                        SizedBox(height: screenHeight * 0.03), // Spacer proportional to screen height
 
                         // Get OTP Button
                         ElevatedButton(
-                          onPressed: () => loginController.getOtp(context),
+                          // onPressed: () => loginController.getOtp(context),
+                          onPressed: () => loginController.login(context),
                           style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(
-                                vertical: screenHeight *
-                                    0.02), // Proportional to screen height
-                            backgroundColor:
-                                const Color(0xFFDAA520), // Gold color
+                            padding:
+                                EdgeInsets.symmetric(vertical: screenHeight * 0.02), // Proportional to screen height
+                            backgroundColor: const Color(0xFFDAA520), // Gold color
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
                           ),
                           child: Center(
                             child: Text(
-                              'Get OTP',
+                              'SignIn',
                               style: TextStyle(
                                   fontSize: screenWidth * 0.045,
-                                  color: Colors
-                                      .black), // Font size proportional to screen width
+                                  color: Colors.black), // Font size proportional to screen width
                             ),
                           ),
                         ),
-                        SizedBox(
-                            height: screenHeight *
-                                0.05), // Spacer proportional to screen height
+                        SizedBox(height: screenHeight * 0.05), // Spacer proportional to screen height
 
                         // OR Text
                         const Text(
                           'or',
                           style: TextStyle(color: Colors.white70, fontSize: 16),
                         ),
-                        SizedBox(
-                            height: screenHeight *
-                                0.01), // Spacer proportional to screen height
+                        SizedBox(height: screenHeight * 0.01), // Spacer proportional to screen height
 
                         // Social Media Login Options
                         const Text(
                           'Login using',
                           style: TextStyle(color: Colors.white70, fontSize: 16),
                         ),
-                        SizedBox(
-                            height: screenHeight *
-                                0.02), // Spacer proportional to screen height
+                        SizedBox(height: screenHeight * 0.02), // Spacer proportional to screen height
 
                         // Social Media Icons
                         Row(
@@ -151,44 +133,33 @@ class Login2 extends ConsumerWidget {
                             // Google Icon
                             IconButton(
                               icon: Image.asset('assets/images/google.png'),
-                              iconSize:
-                                  screenWidth * 0.1, // 10% of screen width
+                              iconSize: screenWidth * 0.1, // 10% of screen width
                               onPressed: loginController.signUpWithGoogle,
                             ),
-                            SizedBox(
-                                width: screenWidth *
-                                    0.05), // Spacer proportional to screen width
+                            SizedBox(width: screenWidth * 0.05), // Spacer proportional to screen width
                             // Facebook Icon
                             IconButton(
                               icon: Image.asset('assets/images/fb.png'),
-                              iconSize:
-                                  screenWidth * 0.1, // 10% of screen width
+                              iconSize: screenWidth * 0.1, // 10% of screen width
                               onPressed: loginController.signUpWithFacebook,
                             ),
-                            SizedBox(
-                                width: screenWidth *
-                                    0.05), // Spacer proportional to screen width
+                            SizedBox(width: screenWidth * 0.05), // Spacer proportional to screen width
                             // Apple Icon
                             IconButton(
                               icon: Image.asset('assets/images/ios.png'),
-                              iconSize:
-                                  screenWidth * 0.1, // 10% of screen width
+                              iconSize: screenWidth * 0.1, // 10% of screen width
                               onPressed: loginController.signUpWithApple,
                             ),
                           ],
                         ),
-                        SizedBox(
-                            height: screenHeight *
-                                0.05), // Spacer proportional to screen height
+                        SizedBox(height: screenHeight * 0.05), // Spacer proportional to screen height
 
                         // Footer Text
                         const Text(
                           'Innovation by',
                           style: TextStyle(color: Colors.white70, fontSize: 16),
                         ),
-                        SizedBox(
-                            height: screenHeight *
-                                0.01), // Spacer proportional to screen height
+                        SizedBox(height: screenHeight * 0.01), // Spacer proportional to screen height
                         const Text(
                           'Ulchemy',
                           style: TextStyle(
@@ -197,9 +168,7 @@ class Login2 extends ConsumerWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(
-                            height: screenHeight *
-                                0.05), // Spacer proportional to screen height
+                        SizedBox(height: screenHeight * 0.05), // Spacer proportional to screen height
                       ],
                     ),
                   ),
