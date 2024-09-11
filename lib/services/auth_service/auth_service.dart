@@ -8,10 +8,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final dioClientProvider = Provider((ref) => DioClient(Dio()));
-final authServiceProvider = Provider((ref) => AuthService(ref.read(dioClientProvider), ref.read(dataStorageProvider)));
+final authServiceProvider = Provider((ref) =>
+    AuthService(ref.read(dioClientProvider), ref.read(dataStorageProvider)));
 
 class AuthService {
   final DioClient _dioClient;
+  // ignore: unused_field
   final DataStorage _dataStorage;
 
   AuthService(this._dioClient, this._dataStorage);
@@ -54,7 +56,8 @@ class AuthService {
 
   Future<Response> raqLinkVerify(String raqCode) async {
     try {
-      final response = await _dioClient.dio.get(ApiEndpoints.faqVerify, queryParameters: {'raqCode': raqCode});
+      final response = await _dioClient.dio
+          .get(ApiEndpoints.faqVerify, queryParameters: {'raqCode': raqCode});
       return response;
     } catch (error) {
       rethrow;
@@ -63,7 +66,8 @@ class AuthService {
 
   Future<Response> raqLinkVerifyUser(RAQVerification model) async {
     try {
-      final response = await _dioClient.dio.put(ApiEndpoints.faqVerify, data: model.toJson());
+      final response = await _dioClient.dio
+          .put(ApiEndpoints.faqVerify, data: model.toJson());
       return response;
     } catch (error) {
       rethrow;
