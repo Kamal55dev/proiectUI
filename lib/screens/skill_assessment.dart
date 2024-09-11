@@ -17,7 +17,7 @@ class SkillAssessment extends ConsumerWidget {
         elevation: 0,
         leading: IconButton(
           onPressed:(){
-
+            Navigator.of(context).pop();
           } , 
           icon:const Icon(Icons.arrow_back), 
           ) ,
@@ -73,7 +73,7 @@ class SkillAssessment extends ConsumerWidget {
         children: [
           const CircleAvatar(
             radius: 24,
-            backgroundImage: AssetImage('assets/images/Ellipse 100.png'),
+            backgroundImage: AssetImage('assets/images/profile_image/Ellipse 100.png'),
           ),
           const SizedBox(width: 16),
           Column(
@@ -225,7 +225,7 @@ class SkillAssessment extends ConsumerWidget {
                 children: [
                   const CircleAvatar(
                     radius: 12,
-                    backgroundImage: AssetImage('assets/images/Frame 2085661773.png'),
+                    backgroundImage: AssetImage('assets/images/profile_image/Frame 2085661773.png'),
                   ),
                   const SizedBox(width: 8),
                   Expanded(
@@ -292,7 +292,7 @@ class SkillAssessment extends ConsumerWidget {
               ],
             ),
             Image.asset(
-              'assets/images/file-fav-dynamic-premium.png',
+              'assets/images/player_images/file-fav-dynamic-premium.png',
               height: 145,
               width: 145,
             ),

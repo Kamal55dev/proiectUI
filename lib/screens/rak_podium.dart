@@ -1,4 +1,4 @@
-import 'package:badminton/screens/Match_scroring_page.dart';
+import 'package:badminton/screens/match_scoring/scoring_page.dart/view/match_scroring_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -12,7 +12,7 @@ class RakPodium extends ConsumerWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
           onPressed: () {
-            Navigator.pop(context); // Navigate to the previous page
+            Navigator.of(context).pop(); // Navigate to the previous page
           },
         ),
         title: const Text('RAK Podium'),
@@ -50,7 +50,7 @@ class RakPodium extends ConsumerWidget {
         children: [
           const CircleAvatar(
             radius: 24,
-            backgroundImage: AssetImage('assets/images/Ellipse 100.png'),
+            backgroundImage: AssetImage('assets/images/profile_image/Ellipse 100.png'),
           ),
           const SizedBox(width: 16),
           Column(
@@ -144,7 +144,7 @@ class RakPodium extends ConsumerWidget {
               ],
             ),
             Image.asset(
-              'assets/images/trophy-dynamic-premium.png',
+              'assets/images/player_images/trophy-dynamic-premium.png',
               height: 145,
               width: 145,
             ),
@@ -258,7 +258,7 @@ class RakPodium extends ConsumerWidget {
             children: [
               CircleAvatar(
                 radius: 20,
-                backgroundImage: AssetImage('assets/images/Ellipse 100.png'),
+                backgroundImage: AssetImage('assets/images/profile_image/Ellipse 100.png'),
               ),
               SizedBox(width: 8),
               Column(

@@ -242,7 +242,7 @@ Widget _buildLabelCard(String label) {
         children: [
           const CircleAvatar(
             radius: 24,
-            backgroundImage: AssetImage('assets/images/Ellipse 100.png'),
+            backgroundImage: AssetImage('assets/images/profile_image/Ellipse 100.png'),
           ),
           const SizedBox(width: 16),
           Column(
