@@ -2,10 +2,10 @@
 
 import 'dart:developer';
 import 'package:badminton/common/message_view.dart';
-import 'package:badminton/core/models/authentication/roles.dart';
 import 'package:badminton/core/models/authentication/sign_up_model.dart';
 import 'package:badminton/core/utils/data_storage.dart';
 import 'package:badminton/modules/authentication/controllers/loader.dart';
+import 'package:badminton/modules/user_prof_module.dart/user_prof.dart';
 import 'package:badminton/services/auth_service/auth_service.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -16,15 +16,11 @@ final signUpControllerProvider = StateNotifierProvider<SignUpController, SignUpS
     fullNameController: TextEditingController(),
     emailController: TextEditingController(),
     phoneNumberController: TextEditingController(),
-    authTypeController: TextEditingController(),
     dateOfBirthController: TextEditingController(),
     addressController: TextEditingController(),
     signUpKey: GlobalKey<FormState>(debugLabel: 'signUpKey'),
     color: Colors.white,
-    roleError: false,
     raqLinkCode: TextEditingController(),
-    roles: [],
-    rolesLoading: false,
   );
   ref.onDispose(state.dispose);
   return SignUpController(state, ref.read(loaderProvider), ref.read(authServiceProvider), ref.read(messageProvider),
@@ -39,7 +35,6 @@ class SignUpController extends StateNotifier<SignUpState> {
 
   SignUpController(super.state, this._loaderProvider, this._authService, this._messageHandler, this._dataStorage) {
     state.raqLinkCode.addListener(_onRaqLinkCodeChanged);
-    _getSignupRoles();
   }
 
   void toggleVisibility() {
@@ -55,43 +50,47 @@ class SignUpController extends StateNotifier<SignUpState> {
   }
 
   Future<void> signUp(BuildContext context) async {
-    checkValidations();
-    if (state.signUpKey.currentState!.validate()) {
-      if (!checkValidations()) {
-        return;
+    log('onnnnn');
+    if (state.signUpKey.currentState == null || !state.signUpKey.currentState!.validate()) {
+      log('sign keyy');
+      return;
+    }
+    state.signUpKey.currentState!.save();
+    _loaderProvider.setLoader(true);
+    try {
+      Response response = await _authService.register(state.toSignUpModel());
+      _loaderProvider.setLoader(false);
+      log(response.toString());
+      if (response.statusCode == 201 && context.mounted) {
+        log('success');
+        _messageHandler.showErrorMessage(context, response.statusCode!, 'Sign Up Successful');
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => const UserProfile(),
+        ));
+      } else if (context.mounted) {
+        _messageHandler.showErrorMessage(context, response.statusCode!, 'Unexpected error, please try again later.');
       }
-      state.signUpKey.currentState!.save();
-      try {
-        Response response = await _authService.register(state.toSignUpModel());
-        _loaderProvider.setLoader(false);
-
-        if (response.statusCode == 201) {
-          _messageHandler.showErrorMessage(context, response.statusCode!, 'Sign Up Successful');
-          // Navigator.pushNamed(context, CommonAppRoutes.initial);
-        } else {
-          _messageHandler.showErrorMessage(context, response.statusCode!, 'Unexpected error, please try again later.');
-        }
-      } on DioException catch (e) {
-        int statusCode = e.response?.statusCode ?? 500;
+    } on DioException catch (e) {
+      _loaderProvider.setLoader(false);
+      int statusCode = e.response?.statusCode ?? 500;
+      if (context.mounted) {
         if (statusCode == 409) {
           _messageHandler.showErrorMessage(context, 409, "Email Id is already registered");
         } else {
           _messageHandler.showErrorMessage(
               context, statusCode, "An unexpected error occurred. Please try again later.");
         }
-      } catch (error) {
-        log(error.toString());
+      }
+    } catch (error) {
+      log(error.toString());
+      _loaderProvider.setLoader(false);
+      if (context.mounted) {
         _messageHandler.showErrorMessage(context, 500, 'An unexpected error occurred. Please try again later.');
       }
     }
   }
 
   bool checkValidations() {
-    if (state.selectedRole == 0) {
-      state = state.copyWith(roleError: true);
-      return false;
-    }
-
     if (!state.acceptPrivacyPolicy) {
       state = state.copyWith(color: Colors.red);
       return false;
@@ -104,16 +103,10 @@ class SignUpController extends StateNotifier<SignUpState> {
     state.fullNameController.clear();
     state.emailController.clear();
     state.phoneNumberController.clear();
-    state.authTypeController.clear();
     state.dateOfBirthController.clear();
     state.addressController.clear();
     state.raqLinkCode.clear();
     state = state.copyWith(color: Colors.white);
-  }
-
-  void selectRole(Role role) {
-    state = state.copyWith(selectedRole: role.id);
-    state = state.copyWith(roleError: false);
   }
 
   void _onRaqLinkCodeChanged() {
@@ -122,30 +115,12 @@ class SignUpController extends StateNotifier<SignUpState> {
     }
   }
 
-  Future<void> _getSignupRoles() async {
-    state = state.copyWith(rolesLoading: true);
-    Response response = await _authService.getRoles();
-    if (response.statusCode != 200) {
-      state = state.copyWith(rolesLoading: false);
-      _messageHandler.showErrorMessage(
-          state.signUpKey.currentContext!, response.statusCode!, 'Unexpected error, please try again later.');
-      return;
-    } else if (response.statusCode == 500) {
-      _messageHandler.showErrorMessage(
-          state.signUpKey.currentContext!, response.statusCode!, 'Please contact administrators.');
-    }
-    List<Role> roles = (response.data as List).map((item) => Role.fromJson(item)).toList();
-    state = state.copyWith(roles: roles);
-    state = state.copyWith(rolesLoading: false);
-  }
-
   @override
   void dispose() {
     state.raqLinkCode.removeListener(_onRaqLinkCodeChanged);
     state.emailController.dispose();
     state.fullNameController.dispose();
     state.phoneNumberController.dispose();
-    state.authTypeController.dispose();
     state.dateOfBirthController.dispose();
     state.addressController.dispose();
     super.dispose();
@@ -156,37 +131,27 @@ class SignUpState {
   final TextEditingController fullNameController;
   final TextEditingController emailController;
   final TextEditingController phoneNumberController;
-  final TextEditingController authTypeController;
-  final TextEditingController dateOfBirthController;
-  final TextEditingController addressController;
+  final TextEditingController dateOfBirthController; // New field for dateOfBirth
+  final TextEditingController addressController; // New field for address
   final GlobalKey<FormState> signUpKey;
   final bool obscureText;
   final bool acceptPrivacyPolicy;
   final Color color;
-  final int selectedRole;
-  final bool roleError;
   final TextEditingController raqLinkCode;
   final bool isLoading;
-  final List<Role> roles;
-  final bool rolesLoading;
 
   SignUpState({
     required this.fullNameController,
     required this.emailController,
     required this.phoneNumberController,
-    required this.authTypeController,
     required this.dateOfBirthController,
     required this.addressController,
     required this.signUpKey,
     this.obscureText = true,
     this.acceptPrivacyPolicy = false,
     required this.color,
-    this.selectedRole = 0,
-    this.roleError = false,
     required this.raqLinkCode,
     this.isLoading = false,
-    required this.roles,
-    required this.rolesLoading,
   });
 
   SignUpState copyWith({
@@ -200,30 +165,21 @@ class SignUpState {
     bool? obscureText,
     bool? acceptPrivacyPolicy,
     Color? color,
-    int? selectedRole,
-    bool? roleError,
     TextEditingController? raqLinkCode,
     bool? isLoading,
-    List<Role>? roles,
-    bool? rolesLoading,
   }) {
     return SignUpState(
       fullNameController: fullNameController ?? this.fullNameController,
       emailController: emailController ?? this.emailController,
       phoneNumberController: phoneNumberController ?? this.phoneNumberController,
-      authTypeController: authTypeController ?? this.authTypeController,
       dateOfBirthController: dateOfBirthController ?? this.dateOfBirthController,
       addressController: addressController ?? this.addressController,
       signUpKey: signUpKey ?? this.signUpKey,
       obscureText: obscureText ?? this.obscureText,
       acceptPrivacyPolicy: acceptPrivacyPolicy ?? this.acceptPrivacyPolicy,
       color: color ?? this.color,
-      selectedRole: selectedRole ?? this.selectedRole,
-      roleError: roleError ?? this.roleError,
       raqLinkCode: raqLinkCode ?? this.raqLinkCode,
       isLoading: isLoading ?? this.isLoading,
-      roles: roles ?? this.roles,
-      rolesLoading: rolesLoading ?? this.rolesLoading,
     );
   }
 
@@ -231,7 +187,6 @@ class SignUpState {
     fullNameController.dispose();
     emailController.dispose();
     phoneNumberController.dispose();
-    authTypeController.dispose();
     dateOfBirthController.dispose();
     addressController.dispose();
   }
@@ -241,9 +196,8 @@ class SignUpState {
       name: fullNameController.text,
       email: emailController.text,
       mobileNumber: phoneNumberController.text,
-      authType: authTypeController.text,
-      dateOfBirth: dateOfBirthController.text,
-      address: addressController.text,
+      dateOfBirth: dateOfBirthController.text, // Updated for dateOfBirth
+      address: addressController.text, // Updated for address
     );
   }
 }

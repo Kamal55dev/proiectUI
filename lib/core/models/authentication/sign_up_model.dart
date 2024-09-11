@@ -10,19 +10,19 @@ class SignUpModel {
     required this.name,
     required this.email,
     required this.mobileNumber,
-    required this.authType,
+    this.authType = 'email',
     required this.dateOfBirth,
     required this.address,
   });
 
   factory SignUpModel.fromJson(Map<String, dynamic> json) {
     return SignUpModel(
-      name: json['name'] as String,
-      email: json['email'] as String,
-      mobileNumber: json['mobileNumber'] as String,
-      authType: json['authType'] as String,
-      dateOfBirth: json['dateOfBirth'] as String,
-      address: json['address'] as String,
+      name: json['name'] ?? '',
+      email: json['email'] ?? '',
+      mobileNumber: json['mobileNumber'] ?? '',
+      authType: json['authType'] ?? 'email',
+      dateOfBirth: json['dateOfBirth'] ?? '',
+      address: json['address'] ?? '',
     );
   }
 
