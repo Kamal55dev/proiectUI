@@ -1,7 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import '../controllers/player_prof_provider/player_prof_provider_3.dart';
 
 // ignore: camel_case_types
@@ -10,18 +8,23 @@ class PlayingProf_3 extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // Watch the selected game type state from the controller
     final selectedGameType = ref.watch(playingProfileControllerProvider);
 
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
         children: [
-          // Background Image
-          Positioned.fill(
+          // Background Image at the top
+          Positioned(
+            top: 20,
+            left: 0,
+            right: 0,
             child: Image.asset(
-              'assets/images/bg_images/Looper Bg image.png', // Background image path
-              fit: BoxFit.cover, // Ensures the image covers the whole screen
+              'assets/images/bg_images/Looper BG.png', // Background image path
+              fit: BoxFit
+                  .cover, // Ensures the image covers the top of the screen
+              height: MediaQuery.of(context).size.height *
+                  0.4, // Adjust height as needed
             ),
           ),
           // Safe area to avoid system elements
@@ -31,15 +34,17 @@ class PlayingProf_3 extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 50),
-                  // Title Row with close button
+                  const SizedBox(height: 30), // Space for content
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text(
                         'Playing Profile',
                         style: TextStyle(
-                            color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold, fontFamily: 'Poppins'),
+                            color: Colors.white,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Poppins'),
                       ),
                       IconButton(
                         icon: const Icon(Icons.close, color: Colors.white),
@@ -50,7 +55,6 @@ class PlayingProf_3 extends ConsumerWidget {
                     ],
                   ),
                   const SizedBox(height: 20),
-                  // Subtitle
                   const Text(
                     'What is your preferred game type?',
                     style: TextStyle(
@@ -71,8 +75,9 @@ class PlayingProf_3 extends ConsumerWidget {
                         ),
                         selected: selectedGameType == type,
                         onSelected: (isSelected) {
-                          // Update the selected game type using the controller
-                          ref.read(playingProfileControllerProvider.notifier).selectGameType(isSelected ? type : null);
+                          ref
+                              .read(playingProfileControllerProvider.notifier)
+                              .selectGameType(isSelected ? type : null);
                         },
                         selectedColor: const Color(0xFFDAA520),
                         backgroundColor: Colors.grey[800],
@@ -85,46 +90,64 @@ class PlayingProf_3 extends ConsumerWidget {
                       );
                     }).toList(),
                   ),
-                  // const Spacer(),
-                  const SizedBox(
-                    height: 80,
-                  ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: ElevatedButton(
-                      onPressed: selectedGameType != null
-                          ? () {
-                              // Handle the finish action
-                              if (kDebugMode) {
-                                print("Selected Game Type: $selectedGameType");
-                              }
-                            }
-                          : null,
-                      style: ElevatedButton.styleFrom(
-                        foregroundColor: selectedGameType != null ? Colors.black : Colors.white.withOpacity(0.5),
-                        backgroundColor:
-                            selectedGameType != null ? const Color(0xFFDAA520) : Colors.grey.withOpacity(0.3),
-                        elevation: selectedGameType != null ? 5 : 0,
-                        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
+                  const SizedBox(height: 80),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pop(
+                              context); // Handle Previous button action
+                        },
+                        child: const Row(
+                          children: [
+                            Icon(
+                              Icons.arrow_back,
+                              color: Colors.white,
+                            ),
+                            SizedBox(width: 8),
+                            Text(
+                              'Previous',
+                              style: TextStyle(
+                                fontFamily: 'Poppins',
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      child: const Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            'Finish',
-                            style: TextStyle(fontSize: 16),
+                      ElevatedButton.icon(
+                        onPressed: selectedGameType != null
+                            ? () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const PlayingProf_3(),
+                                    ));
+                              }
+                            : null,
+                        label: const Text(
+                          'Finish',
+                          style: TextStyle(
+                              fontFamily: 'Poppins', color: Colors.white),
+                        ),
+                        icon: const Icon(
+                          Icons.check,
+                          color: Colors.white,
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: selectedGameType != null
+                              ? const Color(0xFFDAA520)
+                              : Colors.grey.withOpacity(0.3),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 15, horizontal: 25),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
                           ),
-                          SizedBox(width: 8),
-                          Icon(
-                            Icons.check,
-                            size: 20,
-                          ),
-                        ],
+                        ),
                       ),
-                    ),
+                    ],
                   ),
                 ],
               ),

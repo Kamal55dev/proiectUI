@@ -11,6 +11,7 @@ final authServiceProvider = Provider((ref) => AuthService(ref.read(dioClientProv
 
 class AuthService {
   final DioClient _dioClient;
+  // ignore: unused_field
   final DataStorage _dataStorage;
 
   AuthService(this._dioClient, this._dataStorage);
