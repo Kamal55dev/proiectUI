@@ -94,11 +94,18 @@ String? validateRaqCode(String value) {
 }
 
 String? validatelicenseNum(String? value) {
+  final RegExp licenseNumRegex = RegExp(r'^\d{8,}$'); // At least 8 digits
+
   if (value == null || value.isEmpty) {
     return 'Please enter your license number';
+  } else if (!licenseNumRegex.hasMatch(value)) {
+    return 'Please enter a valid license format';
   }
+
   return null;
 }
+
+
 
 String? validateyearsofExperience(String? value) {
   if (value == null || value.isEmpty) {
