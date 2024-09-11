@@ -1,7 +1,6 @@
 import 'package:badminton/core/endpoints/endpoints.dart';
 import 'package:badminton/core/models/authentication/sign_up_model.dart';
 import 'package:badminton/core/utils/data_storage.dart';
-import 'package:badminton/modules/authentication/controllers/raq_controller.dart';
 import 'package:badminton/services/dio_client.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -48,25 +47,5 @@ class AuthService {
       data: model.toJson(),
     );
     return response;
-  }
-
-  //========================================RAQ LINK=======================================//
-
-  Future<Response> raqLinkVerify(String raqCode) async {
-    try {
-      final response = await _dioClient.dio.get(ApiEndpoints.faqVerify, queryParameters: {'raqCode': raqCode});
-      return response;
-    } catch (error) {
-      rethrow;
-    }
-  }
-
-  Future<Response> raqLinkVerifyUser(RAQVerification model) async {
-    try {
-      final response = await _dioClient.dio.put(ApiEndpoints.faqVerify, data: model.toJson());
-      return response;
-    } catch (error) {
-      rethrow;
-    }
   }
 }

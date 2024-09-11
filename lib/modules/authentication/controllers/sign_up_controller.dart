@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously, unused_field
+// ignore_for_file: use_build_context_synchronously
 
 import 'dart:developer';
 import 'package:badminton/common/message_view.dart';
@@ -6,7 +6,6 @@ import 'package:badminton/core/models/authentication/roles.dart';
 import 'package:badminton/core/models/authentication/sign_up_model.dart';
 import 'package:badminton/core/utils/data_storage.dart';
 import 'package:badminton/modules/authentication/controllers/loader.dart';
-import 'package:badminton/modules/authentication/controllers/raq_controller.dart';
 import 'package:badminton/services/auth_service/auth_service.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -14,15 +13,19 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final signUpControllerProvider = StateNotifierProvider<SignUpController, SignUpState>((ref) {
   final state = SignUpState(
-      fullNameController: TextEditingController(),
-      emailController: TextEditingController(),
-      phoneNumberController: TextEditingController(),
-      signUpKey: GlobalKey<FormState>(debugLabel: 'signUpKey'),
-      color: Colors.white,
-      roleError: false,
-      raqLinkCode: TextEditingController(),
-      roles: [],
-      rolesLoading: false);
+    fullNameController: TextEditingController(),
+    emailController: TextEditingController(),
+    phoneNumberController: TextEditingController(),
+    authTypeController: TextEditingController(),
+    dateOfBirthController: TextEditingController(),
+    addressController: TextEditingController(),
+    signUpKey: GlobalKey<FormState>(debugLabel: 'signUpKey'),
+    color: Colors.white,
+    roleError: false,
+    raqLinkCode: TextEditingController(),
+    roles: [],
+    rolesLoading: false,
+  );
   ref.onDispose(state.dispose);
   return SignUpController(state, ref.read(loaderProvider), ref.read(authServiceProvider), ref.read(messageProvider),
       ref.read(dataStorageProvider));
@@ -51,17 +54,6 @@ class SignUpController extends StateNotifier<SignUpState> {
     state = state.copyWith(acceptPrivacyPolicy: value);
   }
 
-  Future<Academy?> getAcademy() async {
-    final Academy? academy = await DataStorage().getAcademy();
-    if (academy != null) {
-      state.copyWith(
-        academyId: academy.id,
-        isOrientationTeam: academy.isOrientationTeam,
-      );
-    }
-    return null;
-  }
-
   Future<void> signUp(BuildContext context) async {
     checkValidations();
     if (state.signUpKey.currentState!.validate()) {
@@ -69,11 +61,8 @@ class SignUpController extends StateNotifier<SignUpState> {
         return;
       }
       state.signUpKey.currentState!.save();
-      await getAcademy();
       try {
-        final Academy? academy = await DataStorage().getAcademy();
-
-        Response response = await _authService.register(state.toSignUpModel(academy!.id, academy.isOrientationTeam));
+        Response response = await _authService.register(state.toSignUpModel());
         _loaderProvider.setLoader(false);
 
         if (response.statusCode == 201) {
@@ -88,11 +77,11 @@ class SignUpController extends StateNotifier<SignUpState> {
           _messageHandler.showErrorMessage(context, 409, "Email Id is already registered");
         } else {
           _messageHandler.showErrorMessage(
-              context, statusCode, "An unexpected error occurred. Please try again later.s");
+              context, statusCode, "An unexpected error occurred. Please try again later.");
         }
       } catch (error) {
         log(error.toString());
-        _messageHandler.showErrorMessage(context, 500, 'An unexpected error occurred. Please try again later.ss');
+        _messageHandler.showErrorMessage(context, 500, 'An unexpected error occurred. Please try again later.');
       }
     }
   }
@@ -111,41 +100,13 @@ class SignUpController extends StateNotifier<SignUpState> {
     return true;
   }
 
-  // void signUp(BuildContext context) {
-  //   print("privacy::::::" + state.acceptPrivacyPolicy.toString());
-
-  //   checkValidations();
-  //   if (state.signUpformKey.currentState!.validate()) {
-  //     if (!checkValidations()) {
-  //       return;
-  //     }
-  //     state.signUpformKey.currentState!.save();
-  //     _loaderProvider.simulateDemoIsLoaderDelay();
-
-  //     Navigator.pushNamed(context, CommonAppRoutes.initial);
-  //     log("sign up success");
-  //   }
-  // }
-
-  // bool checkValidations(){
-
-  //   if (state.selectedRole.isEmpty) {
-  //       state = state.copyWith(roleError: true);
-  //       return false;
-  //   }
-
-  //   if (!state.acceptPrivacyPolicy) {
-  //     state = state.copyWith(color: Colors.red);
-  //     return false;
-  //   }
-
-  //   return true;
-  // }
-
   void reset() {
     state.fullNameController.clear();
     state.emailController.clear();
     state.phoneNumberController.clear();
+    state.authTypeController.clear();
+    state.dateOfBirthController.clear();
+    state.addressController.clear();
     state.raqLinkCode.clear();
     state = state.copyWith(color: Colors.white);
   }
@@ -161,7 +122,7 @@ class SignUpController extends StateNotifier<SignUpState> {
     }
   }
 
-  _getSignupRoles() async {
+  Future<void> _getSignupRoles() async {
     state = state.copyWith(rolesLoading: true);
     Response response = await _authService.getRoles();
     if (response.statusCode != 200) {
@@ -184,6 +145,9 @@ class SignUpController extends StateNotifier<SignUpState> {
     state.emailController.dispose();
     state.fullNameController.dispose();
     state.phoneNumberController.dispose();
+    state.authTypeController.dispose();
+    state.dateOfBirthController.dispose();
+    state.addressController.dispose();
     super.dispose();
   }
 }
@@ -192,6 +156,9 @@ class SignUpState {
   final TextEditingController fullNameController;
   final TextEditingController emailController;
   final TextEditingController phoneNumberController;
+  final TextEditingController authTypeController;
+  final TextEditingController dateOfBirthController;
+  final TextEditingController addressController;
   final GlobalKey<FormState> signUpKey;
   final bool obscureText;
   final bool acceptPrivacyPolicy;
@@ -202,46 +169,51 @@ class SignUpState {
   final bool isLoading;
   final List<Role> roles;
   final bool rolesLoading;
-  final int? academyId;
-  final int? isOrientationTeam;
 
-  SignUpState(
-      {required this.fullNameController,
-      required this.emailController,
-      required this.phoneNumberController,
-      required this.signUpKey,
-      this.obscureText = true,
-      this.acceptPrivacyPolicy = false,
-      required this.color,
-      this.selectedRole = 0,
-      this.roleError = false,
-      required this.raqLinkCode,
-      this.isLoading = false,
-      this.academyId,
-      this.isOrientationTeam,
-      required this.roles,
-      required this.rolesLoading});
+  SignUpState({
+    required this.fullNameController,
+    required this.emailController,
+    required this.phoneNumberController,
+    required this.authTypeController,
+    required this.dateOfBirthController,
+    required this.addressController,
+    required this.signUpKey,
+    this.obscureText = true,
+    this.acceptPrivacyPolicy = false,
+    required this.color,
+    this.selectedRole = 0,
+    this.roleError = false,
+    required this.raqLinkCode,
+    this.isLoading = false,
+    required this.roles,
+    required this.rolesLoading,
+  });
 
-  SignUpState copyWith(
-      {TextEditingController? fullNameController,
-      TextEditingController? emailController,
-      TextEditingController? phoneNumberController,
-      GlobalKey<FormState>? signUpKey,
-      bool? obscureText,
-      bool? acceptPrivacyPolicy,
-      Color? color,
-      int? selectedRole,
-      bool? roleError,
-      TextEditingController? raqLinkCode,
-      bool? isLoading,
-      List<Role>? roles,
-      int? academyId,
-      int? isOrientationTeam,
-      bool? rolesLoading}) {
+  SignUpState copyWith({
+    TextEditingController? fullNameController,
+    TextEditingController? emailController,
+    TextEditingController? phoneNumberController,
+    TextEditingController? authTypeController,
+    TextEditingController? dateOfBirthController,
+    TextEditingController? addressController,
+    GlobalKey<FormState>? signUpKey,
+    bool? obscureText,
+    bool? acceptPrivacyPolicy,
+    Color? color,
+    int? selectedRole,
+    bool? roleError,
+    TextEditingController? raqLinkCode,
+    bool? isLoading,
+    List<Role>? roles,
+    bool? rolesLoading,
+  }) {
     return SignUpState(
       fullNameController: fullNameController ?? this.fullNameController,
       emailController: emailController ?? this.emailController,
       phoneNumberController: phoneNumberController ?? this.phoneNumberController,
+      authTypeController: authTypeController ?? this.authTypeController,
+      dateOfBirthController: dateOfBirthController ?? this.dateOfBirthController,
+      addressController: addressController ?? this.addressController,
       signUpKey: signUpKey ?? this.signUpKey,
       obscureText: obscureText ?? this.obscureText,
       acceptPrivacyPolicy: acceptPrivacyPolicy ?? this.acceptPrivacyPolicy,
@@ -252,8 +224,6 @@ class SignUpState {
       isLoading: isLoading ?? this.isLoading,
       roles: roles ?? this.roles,
       rolesLoading: rolesLoading ?? this.rolesLoading,
-      academyId: academyId ?? this.academyId,
-      isOrientationTeam: isOrientationTeam ?? this.isOrientationTeam,
     );
   }
 
@@ -261,16 +231,19 @@ class SignUpState {
     fullNameController.dispose();
     emailController.dispose();
     phoneNumberController.dispose();
+    authTypeController.dispose();
+    dateOfBirthController.dispose();
+    addressController.dispose();
   }
 
-  SignUpModel toSignUpModel(int? academyId, int? isOrientationTeam) {
+  SignUpModel toSignUpModel() {
     return SignUpModel(
       name: fullNameController.text,
       email: emailController.text,
       mobileNumber: phoneNumberController.text,
-      academyId: academyId ?? 0,
-      isOrientationTeam: isOrientationTeam ?? 0,
-      role: selectedRole,
+      authType: authTypeController.text,
+      dateOfBirth: dateOfBirthController.text,
+      address: addressController.text,
     );
   }
 }

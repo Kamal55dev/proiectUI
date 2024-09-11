@@ -297,7 +297,7 @@ class Signup extends ConsumerWidget {
           // Background Image
           Positioned.fill(
             child: Image.asset(
-              'assets/images/Looper BG.png',
+              'assets/images/bg_images/Looper BG.png',
               fit: BoxFit.cover,
             ),
           ),

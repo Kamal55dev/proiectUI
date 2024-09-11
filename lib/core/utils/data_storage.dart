@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:badminton/core/models/authentication/login_user_model.dart';
-import 'package:badminton/modules/authentication/controllers/raq_controller.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
@@ -64,20 +63,20 @@ class DataStorage {
   }
 
   // Store Academy model
-  Future<void> storeAcademy(Academy academy) async {
-    String jsonString = jsonEncode(academy.toJson());
-    await _storage.write(key: 'academy', value: jsonString);
-  }
+  // Future<void> storeAcademy(Academy academy) async {
+  //   String jsonString = jsonEncode(academy.toJson());
+  //   await _storage.write(key: 'academy', value: jsonString);
+  // }
 
-  // // Retrieve Academy model
-  Future<Academy?> getAcademy() async {
-    String? jsonString = await _storage.read(key: 'academy');
-    if (jsonString != null) {
-      Map<String, dynamic> jsonMap = jsonDecode(jsonString);
-      return Academy.fromJson(jsonMap);
-    }
-    return null;
-  }
+  // // // Retrieve Academy model
+  // Future<Academy?> getAcademy() async {
+  //   String? jsonString = await _storage.read(key: 'academy');
+  //   if (jsonString != null) {
+  //     Map<String, dynamic> jsonMap = jsonDecode(jsonString);
+  //     return Academy.fromJson(jsonMap);
+  //   }
+  //   return null;
+  // }
 
   Future<void> clearLoginResponse() async {
     await _storage.delete(key: 'login_user_data');
