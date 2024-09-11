@@ -50,10 +50,16 @@ class _OtpState extends ConsumerState<OtpScreen> {
       body: Stack(
         children: [
           // Background Image
-          Positioned.fill(
+          Positioned(
+            top: 20,
+            left: 0,
+            right: 0,
             child: Image.asset(
-              'assets/images/bg_images/Looper BG.png', // Replace with your background image asset
-              fit: BoxFit.cover,
+              'assets/images/bg_images/Looper BG.png', // Background image path
+              fit: BoxFit
+                  .cover, // Ensures the image covers the top of the screen
+              height: MediaQuery.of(context).size.height *
+                  0.4, // Adjust height as needed
             ),
           ),
           // Content
