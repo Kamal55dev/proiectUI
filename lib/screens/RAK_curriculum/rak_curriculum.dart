@@ -332,7 +332,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../controller/provider/curriculum_provider/curriculam_provider.dart';
-import '../../core/models/player_models/RAK_curriculum/Curriculam_model.dart';
+import '../../modules/player_models/RAK_curriculum/Curriculam_model.dart';
 import 'assign_curriculam_1/view/assign_curriculam_1_screen.dart';
 
 class CurriculumPage extends ConsumerWidget {
