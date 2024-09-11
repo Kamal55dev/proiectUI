@@ -17,7 +17,6 @@ class UserProfileController extends StateNotifier<UserProfileState> {
   }
 }
 
-// Class to represent the user's profile state
 class UserProfileState {
   final String profileImageUrl;
   final String userName;
@@ -28,8 +27,7 @@ class UserProfileState {
   final Language selectedLanguage;
 
   UserProfileState({
-    this.profileImageUrl =
-        'https://example.com/profile.jpg', // Default image URL
+    this.profileImageUrl = '', // Default or empty
     this.userName = 'Lee Chong Wei',
     this.rakCode = '66326',
     this.email = 'rakesh@gmail.com',
@@ -38,7 +36,6 @@ class UserProfileState {
     this.selectedLanguage = Language.english,
   });
 
-  // Copy method to create a modified copy of the state
   UserProfileState copyWith({
     String? profileImageUrl,
     String? userName,
@@ -60,7 +57,7 @@ class UserProfileState {
   }
 }
 
-// Provider for the user profile controller
 final userProfileControllerProvider =
-    StateNotifierProvider<UserProfileController, UserProfileState>(
-        (ref) => UserProfileController());
+    StateNotifierProvider<UserProfileController, UserProfileState>((ref) {
+  return UserProfileController();
+});

@@ -17,11 +17,16 @@ class PlayingProfile extends StatelessWidget {
           backgroundColor: const Color(0xFF1C1C1E), // Dark background color
           body: Stack(
             children: [
-              Positioned.fill(
+              Positioned(
+                top: 20,
+                left: 0,
+                right: 0,
                 child: Image.asset(
-                  'assets/images/Looper BG.png', // Replace with your background image path
-                  fit: BoxFit.cover,
-                  // color: Colors.transparent.withOpacity(0.5),
+                  'assets/images/bg_images/Looper BG.png', // Background image path
+                  fit: BoxFit
+                      .cover, // Ensures the image covers the top of the screen
+                  height: MediaQuery.of(context).size.height *
+                      0.4, // Adjust height as needed
                 ),
               ),
               SafeArea(
@@ -132,10 +137,10 @@ class PlayingProfile extends StatelessWidget {
                                     style: TextStyle(fontSize: 16),
                                   ),
                                   SizedBox(width: 8),
-                                  Icon(
-                                    Icons.arrow_forward,
-                                    size: 20,
-                                  ),
+                                  // Icon(
+                                  //   Icons.arrow_forward,
+                                  //   size: 20,
+                                  // ),
                                 ],
                               ),
                             ),

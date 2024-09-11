@@ -9,153 +9,175 @@ class Playing_2 extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // Access the selected frequency from the provider
-    final selectedFrequency =
-        ref.watch(playingProfProvider2); // No casting needed
+    final selectedFrequency = ref.watch(playingProfProvider2);
 
     return Scaffold(
       backgroundColor: const Color(0xFF1C1C1E), // Dark background color
       body: Stack(
         children: [
-          Positioned.fill(
+          Positioned(
+            top: 20,
+            left: 0,
+            right: 0,
             child: Image.asset(
-              'assets/images/Looper BG.png', // Background image path
-              fit: BoxFit.cover,
+              'assets/images/bg_images/Looper BG.png', // Background image path
+              fit: BoxFit
+                  .cover, // Ensures the image covers the top of the screen
+              height: MediaQuery.of(context).size.height *
+                  0.4, // Adjust height as needed
             ),
           ),
           SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 30),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        'Playing Profile',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Poppins',
-                        ),
-                      ),
-                      IconButton(
-                        icon: const Icon(Icons.close, color: Colors.white),
-                        onPressed: () {
-                          Navigator.pop(context); // Close or navigate away
-                        },
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 20),
-                  const Text(
-                    'When did you last train?',
-                    style: TextStyle(
-                      color: Colors.white70,
-                      fontSize: 18,
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  // Option selection using ChoiceChips
-                  Wrap(
-                    spacing: 10,
-                    runSpacing: 10,
-                    children: PlayingFrequency.values.map((frequency) {
-                      return ChoiceChip(
-                        label: Text(_frequencyLabel(frequency)),
-                        selected: selectedFrequency == frequency,
-                        onSelected: (isSelected) {
-                          if (isSelected) {
-                            // Update the selected frequency in the provider
-                            ref
-                                .read(playingProfProvider2.notifier)
-                                .selectFrequency(frequency);
-                          }
-                        },
-                        selectedColor: const Color(0xFFDAA520),
-                        backgroundColor: Colors.grey[800],
-                        labelStyle: TextStyle(
-                          color: selectedFrequency == frequency
-                              ? Colors.black
-                              : Colors.white,
-                        ),
-                        side: const BorderSide(
-                          color: Colors.grey, // Border color
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                      );
-                    }).toList(),
-                  ),
-                  const SizedBox(height: 60),
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                double screenWidth = constraints.maxWidth;
+                double screenHeight = constraints.maxHeight;
 
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                return Padding(
+                  padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // GestureDetector for Previous
-
-                      GestureDetector(
-                        onTap: () {
-                          // Handle Previous button action
-                          Navigator.pop(context);
-                        },
-                        child: const Row(
-                          children: [
-                            Icon(
-                              Icons.arrow_back,
+                      SizedBox(height: screenHeight * 0.03),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Playing Profile',
+                            style: TextStyle(
                               color: Colors.white,
+                              fontSize:
+                                  screenWidth * 0.06, // Responsive font size
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Poppins',
                             ),
-                            SizedBox(width: 8),
-                            Text(
-                              'Previous',
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.close, color: Colors.white),
+                            onPressed: () {
+                              Navigator.pop(context); // Close or navigate away
+                            },
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: screenHeight * 0.02),
+                      Text(
+                        'When did you last train?',
+                        style: TextStyle(
+                          color: Colors.white70,
+                          fontSize: screenWidth * 0.05, // Responsive font size
+                        ),
+                      ),
+                      SizedBox(height: screenHeight * 0.02),
+                      // Option selection using ChoiceChips
+                      Wrap(
+                        spacing: screenWidth * 0.03, // Responsive spacing
+                        runSpacing: screenHeight * 0.01, // Responsive spacing
+                        children: PlayingFrequency.values.map((frequency) {
+                          return ChoiceChip(
+                            label: Text(_frequencyLabel(frequency)),
+                            selected: selectedFrequency == frequency,
+                            onSelected: (isSelected) {
+                              if (isSelected) {
+                                ref
+                                    .read(playingProfProvider2.notifier)
+                                    .selectFrequency(frequency);
+                              }
+                            },
+                            selectedColor: const Color(0xFFDAA520),
+                            backgroundColor: Colors.grey[800],
+                            labelStyle: TextStyle(
+                              color: selectedFrequency == frequency
+                                  ? Colors.black
+                                  : Colors.white,
+                            ),
+                            side: const BorderSide(
+                              color: Colors.grey, // Border color
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(screenWidth *
+                                  0.05), // Responsive border radius
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                      SizedBox(
+                          height: screenHeight * 0.1), // Responsive spacing
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.pop(
+                                  context); // Handle Previous button action
+                            },
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.arrow_back,
+                                  color: Colors.white,
+                                  size: screenWidth *
+                                      0.05, // Responsive icon size
+                                ),
+                                SizedBox(width: screenWidth * 0.02),
+                                Text(
+                                  'Previous',
+                                  style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                    fontSize: screenWidth *
+                                        0.04, // Responsive font size
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          ElevatedButton.icon(
+                            onPressed: selectedFrequency != null
+                                ? () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const PlayingProf_3(),
+                                        ));
+                                  }
+                                : null,
+                            label: Text(
+                              'Next',
                               style: TextStyle(
-                                fontFamily: 'Poppins',
-                                color: Colors.white,
+                                  fontFamily: 'Poppins',
+                                  color: Colors.white,
+                                  fontSize: screenWidth *
+                                      0.04), // Responsive font size
+                            ),
+                            // icon: const Icon(
+                            //   Icons.arrow_forward,
+                            //   color: Colors.white,
+                            // ),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: selectedFrequency != null
+                                  ? const Color(0xFFDAA520)
+                                  : Colors.grey.withOpacity(0.3),
+                              padding: EdgeInsets.symmetric(
+                                  vertical:
+                                      screenHeight * 0.02, // Responsive padding
+                                  horizontal:
+                                      screenWidth * 0.05), // Responsive padding
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                    screenWidth *
+                                        0.03), // Responsive border radius
                               ),
                             ),
-                          ],
-                        ),
-                      ),
-                      // ElevatedButton for Next
-                      ElevatedButton.icon(
-                        onPressed: selectedFrequency != null
-                            ? () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          const PlayingProf_3(),
-                                    ));
-                              }
-                            : null,
-                        label: const Text(
-                          'Next',
-                          style: TextStyle(
-                              fontFamily: 'Poppins', color: Colors.white),
-                        ),
-                        icon: const Icon(
-                          Icons.arrow_forward,
-                          color: Colors.white,
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: selectedFrequency != null
-                              ? const Color(0xFFDAA520)
-                              : Colors.grey.withOpacity(0.3),
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 15, horizontal: 25),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
                           ),
-                        ),
+                        ],
                       ),
                     ],
                   ),
-                ],
-              ),
+                );
+              },
             ),
           ),
         ],
@@ -163,7 +185,6 @@ class Playing_2 extends ConsumerWidget {
     );
   }
 
-  // Helper function to map frequency enums to user-friendly labels
   String _frequencyLabel(PlayingFrequency frequency) {
     switch (frequency) {
       case PlayingFrequency.currentlyTraining:
