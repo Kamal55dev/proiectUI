@@ -1,9 +1,9 @@
-import 'package:badminton/modules/authentication/signin_module/splash_scrn.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'modules/authentication/signin_module/splash_scrn.dart';
 
 void main() {
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
