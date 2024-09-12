@@ -75,7 +75,7 @@
 //     decoration: BoxDecoration(
 //       borderRadius: BorderRadius.circular(20),
 //       image: const DecorationImage(
-//         image: AssetImage('assets/images/bg_images/Looper Bg image.png'), // Replace with your background image path
+//         image: AssetImage('assets/images/bg_images/Looper BG.png'), // Replace with your background image path
 //         fit: BoxFit.cover,
 //       ),
 //     ),
@@ -390,6 +390,7 @@
 // }
 // }
 
+import 'package:badminton/core/utils/colors.dart';
 import 'package:badminton/modules/coach_module/coach_home/controllers/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -464,7 +465,7 @@ class RAKMainScreen extends ConsumerWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         image: const DecorationImage(
-          image: AssetImage('assets/images/bg_images/Looper Bg image.png'), // Replace with your background image path
+          image: AssetImage('assets/images/bg_images/Looper BG.png'), // Replace with your background image path
           fit: BoxFit.cover,
         ),
       ),
@@ -539,7 +540,7 @@ class RAKMainScreen extends ConsumerWidget {
         child: Row(
           children: [
             Image.asset('assets/images/player_images/Vector.png', height: 30),
-            const SizedBox(width: 10),
+            const SizedBox(width: 20),
             Text(
               academyName,
               style: const TextStyle(color: Colors.white, fontSize: 16),
@@ -554,7 +555,7 @@ class RAKMainScreen extends ConsumerWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        // _buildActionButton(context, Icons.calendar_today, 'Schedule', ScheduleWidget()),
+        _buildActionButton(context, Icons.calendar_today, 'Schedule', null),
         _buildActionButton(context, Icons.favorite, 'Wellness', null),
         _buildActionButton(context, Icons.description, 'Report', null),
         _buildActionButton(context, Icons.sports_tennis, 'Matches', null),
@@ -577,15 +578,20 @@ class RAKMainScreen extends ConsumerWidget {
       child: Column(
         children: [
           Container(
-            padding: const EdgeInsets.all(12),
+            padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               color: const Color(0xFF1E1E1E),
               borderRadius: BorderRadius.circular(12),
             ),
-            child: Icon(icon, color: Colors.white),
+            child: Column(
+              children: [
+                Icon(icon, color: primaryColor),
+                const SizedBox(height: 14),
+                Text(label, style: const TextStyle(color: Colors.white, fontSize: 14)),
+              ],
+            ),
           ),
-          const SizedBox(height: 5),
-          Text(label, style: const TextStyle(color: Colors.white, fontSize: 12)),
+          
         ],
       ),
     );
@@ -620,11 +626,11 @@ class RAKMainScreen extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  'RAK\nCoach Connekt',
+                  'RAK Coach Connekt',
                   style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 const Text(
-                  'Reach to the best coach',
+                  'New Request >',
                   style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w400),
                 ),
                 const SizedBox(height: 8),
@@ -635,13 +641,13 @@ class RAKMainScreen extends ConsumerWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFFB08900), // Updated button color
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(12),
                     ),
                   ),
                   child: const Row(
                     children: [
                       Text('Get Coach'),
-                      SizedBox(width: 5),
+                      SizedBox(width: 8),
                       Icon(Icons.arrow_forward_ios, color: Colors.white, size: 16), // Arrow icon inside the button
                     ],
                   ),

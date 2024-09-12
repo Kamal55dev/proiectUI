@@ -30,7 +30,7 @@ class Login extends ConsumerWidget {
                       child: Image.asset(
                         'assets/images/bg_images/Looper BG.png',
                         fit: BoxFit.cover,
-                        height: screenHeight * 0.4, // 40% of screen height
+                        height: screenHeight * 0.5, // 40% of screen height
                         width: screenWidth,
                       ),
                     ),
@@ -39,7 +39,7 @@ class Login extends ConsumerWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(height: screenHeight * 0.25), // Spacer proportional to screen height
+                          SizedBox(height: screenHeight * 0.35), // Spacer proportional to screen height
 
                           // Logo
                           Image.asset(
@@ -74,7 +74,7 @@ class Login extends ConsumerWidget {
                             children: [
                               const Text(
                                 'New User ? ',
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(color: Colors.white, fontSize: 18),
                               ),
                               GestureDetector(
                                 onTap: () => loginController.navigateToCreateAccount(context),
@@ -83,6 +83,7 @@ class Login extends ConsumerWidget {
                                   style: TextStyle(
                                     color: Color(0xFFDAA520), // Gold color
                                     fontWeight: FontWeight.bold,
+                                    fontSize: 18
                                   ),
                                 ),
                               ),
@@ -92,7 +93,7 @@ class Login extends ConsumerWidget {
 
                           // Social Media Login Options
                           const Text(
-                            'or',
+                            '---- or ----',
                             style: TextStyle(color: Colors.white, fontSize: 16),
                           ),
                           SizedBox(height: screenHeight * 0.01), // Spacer proportional to screen height
