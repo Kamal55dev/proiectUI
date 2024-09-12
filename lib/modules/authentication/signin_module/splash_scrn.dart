@@ -59,7 +59,8 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
                 ),
                 const Text(
                   'Innovation by',
-                  style: TextStyle(color: Colors.white, fontSize: 16, fontFamily: 'Poppins'),
+                  style: TextStyle(
+                      color: Colors.white, fontSize: 16, fontFamily: 'Poppins'),
                 ),
                 const Text(
                   'Ulchemy',

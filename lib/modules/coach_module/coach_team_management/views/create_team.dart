@@ -4,7 +4,7 @@ import 'package:badminton/common/common_size.dart';
 import 'package:badminton/common/common_text.dart';
 import 'package:badminton/common/common_text_form_field.dart';
 import 'package:badminton/core/utils/colors.dart';
-import 'package:badminton/core/utils/validations.dart';
+
 import 'package:badminton/modules/coach_module/coach_team_management/controller/team_management_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,8 +17,8 @@ class CreateTeamScreenTwo extends ConsumerStatefulWidget {
 }
 
 class _CreateTeamScreenTwoState extends ConsumerState<CreateTeamScreenTwo> {
-  Color _selectedColor = primaryColor;
-  bool _isColorSelected = false;
+  final Color _selectedColor = primaryColor;
+  final bool _isColorSelected = false;
   @override
   void initState() {
     super.initState();
@@ -51,7 +51,6 @@ class _CreateTeamScreenTwoState extends ConsumerState<CreateTeamScreenTwo> {
     Colors.blue,
     Colors.green,
     Colors.yellow,
-  
   ];
   @override
   Widget build(BuildContext context) {
@@ -143,7 +142,7 @@ class _CreateTeamScreenTwoState extends ConsumerState<CreateTeamScreenTwo> {
                   itemCount: 20,
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) {
                     return Container(
                       height: kheight * 0.05,

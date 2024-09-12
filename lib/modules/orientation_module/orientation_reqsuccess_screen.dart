@@ -50,7 +50,8 @@ class OreRaqSuccessScreen extends StatelessWidget {
               children: [
                 // Gif widget
                 Container(
-                  height: size.height * 0.3, // Keeping square aspect ratio
+                  height: size.height * 0.4,
+                  // Keeping square aspect ratio
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage(image), // Path to your gif
@@ -60,11 +61,7 @@ class OreRaqSuccessScreen extends StatelessWidget {
                 ),
 
                 kHeight(context, 0.02),
-                // SizedBox(
-                //   height: size.height *
-                //       0.02, // Proportional spacing between logo and text
-                // ),
-                // First text widget
+
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: size.width * 0.1),
                   child: CustomText(

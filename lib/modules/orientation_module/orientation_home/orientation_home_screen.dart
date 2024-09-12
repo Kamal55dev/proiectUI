@@ -2,6 +2,7 @@ import 'package:badminton/common/common_font_size.dart';
 import 'package:badminton/common/common_text.dart';
 import 'package:badminton/common/custom_navigationbar.dart';
 import 'package:badminton/modules/orientation_module/orientation_home/orientation_dashboard.dart';
+import 'package:badminton/modules/orientation_module/orientation_request_lists/views/requester_list.dart';
 import 'package:flutter/material.dart';
 
 class OrientationHome extends StatefulWidget {
@@ -25,7 +26,6 @@ class _OrientationHomeState extends State<OrientationHome> {
           children: [
             Positioned.fill(
               top: -100,
-              // left: 50,
               child: Container(
                 height: size.height,
                 width: size.width,
@@ -33,70 +33,68 @@ class _OrientationHomeState extends State<OrientationHome> {
                   image: DecorationImage(
                     image: AssetImage('assets/images/bg_images/LooperBG2.png'),
                     alignment: Alignment.topLeft,
-                    // fit: BoxFit.cover,
                   ),
                 ),
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(size.width * 0.04), // Uniform padding
+              padding: EdgeInsets.all(size.width * 0.04),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                        bottom: size.height * 0.02), // Padding below the Row
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Container(
-                          width: size.width * 0.3, // Responsive width
-                          height: size.width * 0.3, // Responsive height
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage(
-                                  'assets/images/bg_images/logo.png'),
-                              fit: BoxFit.contain,
-                            ),
+                  // Remove any unnecessary height between the navigation bar and the logo
+                  // SizedBox(height: size.height * 0.1), // Minimal spacing
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Container(
+                        width: size.width * 0.3,
+                        height: size.height * 0.15,
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            image:
+                                AssetImage('assets/images/bg_images/logo.png'),
+                            fit: BoxFit.contain,
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  SizedBox(height: size.height * 0.01),
+
                   SizedBox(
-                    width: size.width * 0.9, // Responsive width
-                    height: size.height * 0.15, // Responsive height
+                      height:
+                          size.height * 0.01), // Adjust this spacing as needed
+
+                  // The card content starts here
+                  SizedBox(
+                    width: size.width * 0.9,
+                    height: size.height * 0.15,
                     child: Card(
                       color: const Color(0x39434F66),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                            size.width * 0.02), // Responsive border radius
+                        borderRadius: BorderRadius.circular(size.width * 0.02),
                       ),
-                      margin: EdgeInsets.only(
-                          bottom: size.height * 0.02), // Margin below the card
+                      margin: EdgeInsets.only(bottom: size.height * 0.02),
                       child: Padding(
-                        padding: EdgeInsets.all(size.width *
-                            0.04), // Uniform padding inside the card
+                        padding: EdgeInsets.all(size.width * 0.04),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             CustomText(
                               text: 'Orientation',
                               textAlign: TextAlign.center,
-                              fontSize: getResponsiveFontSize(context,
-                                  size.width * 0.05), // Responsive font size
+                              fontSize: getResponsiveFontSize(
+                                  context, size.width * 0.05),
                               fontWeight: FontWeight.w600,
                               color: Colors.white,
                             ),
-                            SizedBox(
-                                height:
-                                    size.height * 0.01), // Responsive spacing
+                            SizedBox(height: size.height * 0.01),
                             CustomText(
                               text: 'Team',
                               textAlign: TextAlign.center,
-                              fontSize: getResponsiveFontSize(context,
-                                  size.width * 0.04), // Responsive font size
+                              fontSize: getResponsiveFontSize(
+                                  context, size.width * 0.04),
                               fontWeight: FontWeight.w600,
                               color: Colors.white,
                             ),
@@ -105,74 +103,56 @@ class _OrientationHomeState extends State<OrientationHome> {
                       ),
                     ),
                   ),
+
                   Padding(
-                    padding: EdgeInsets.only(
-                        top: size.height * 0.02), // Padding above the GridView
-                    child: Expanded(
-                      child: GridView.count(
-                        shrinkWrap: true,
-                        physics:
-                            const NeverScrollableScrollPhysics(), // No scroll
-                        crossAxisCount: 2,
-                        mainAxisSpacing:
-                            size.width * 0.04, // Responsive spacing
-                        crossAxisSpacing:
-                            size.width * 0.04, // Responsive spacing
-                        childAspectRatio: size.width /
-                            (size.height * 0.17), // Responsive aspect ratio
-                        // childAspectRatio: 2.7,
-                        children: [
-                          DashboardCard(
-                            imagePath:
-                                'assets/images/icon_images/arcticons_warden.png',
-                            label: 'Academies',
-                            onPressed: () {
-                              // Navigator.pushNamed(context, '/academies');
-                            },
-                          ),
-                          DashboardCard(
-                            imagePath:
-                                'assets/images/icon_images/carbon_event.png',
-                            label: 'Events',
-                            onPressed: () {
-                              // Navigator.pushNamed(context, '/events');
-                            },
-                          ),
-                          DashboardCard(
-                            imagePath: 'assets/images/icon_images/Player.png',
-                            label: 'Players',
-                            onPressed: () {
-                              // Navigator.pushNamed(context, '/players');
-                            },
-                          ),
-                          DashboardCard(
-                            imagePath: 'assets/images/icon_images/Coach.png',
-                            label: 'Coaches',
-                            onPressed: () {
-                              // Navigator.pushNamed(context, '/coaches');
-                            },
-                          ),
-                          DashboardCard(
-                            imagePath: 'assets/images/icon_images/money.png',
-                            label: 'Subscriptions',
-                            onPressed: () {
-                              // Navigator.pushNamed(context, '/subscriptions');
-                            },
-                          ),
-                          DashboardCard(
-                            imagePath: 'assets/images/icon_images/Group.png',
-                            label: 'Requests',
-                            onPressed: () {
-                              // Navigator.pushNamed(context, '/requests');
-                              // Navigator.push(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //         builder: (context) =>
-                              //             OreRaqSuccessScreen()));
-                            },
-                          ),
-                        ],
-                      ),
+                    padding: EdgeInsets.only(top: size.height * 0.02),
+                    child: GridView.count(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      crossAxisCount: 2,
+                      mainAxisSpacing: size.width * 0.04,
+                      crossAxisSpacing: size.width * 0.04,
+                      childAspectRatio: size.width / (size.height * 0.17),
+                      children: [
+                        DashboardCard(
+                          imagePath:
+                              'assets/images/icon_images/arcticons_warden.png',
+                          label: 'Academies',
+                          onPressed: () {},
+                        ),
+                        DashboardCard(
+                          imagePath:
+                              'assets/images/icon_images/carbon_event.png',
+                          label: 'Events',
+                          onPressed: () {},
+                        ),
+                        DashboardCard(
+                          imagePath: 'assets/images/icon_images/Player.png',
+                          label: 'Players',
+                          onPressed: () {},
+                        ),
+                        DashboardCard(
+                          imagePath: 'assets/images/icon_images/Coach.png',
+                          label: 'Coaches',
+                          onPressed: () {},
+                        ),
+                        DashboardCard(
+                          imagePath: 'assets/images/icon_images/money.png',
+                          label: 'Subscriptions',
+                          onPressed: () {},
+                        ),
+                        DashboardCard(
+                          imagePath: 'assets/images/icon_images/Group.png',
+                          label: 'Requests',
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const RequesterList()),
+                            );
+                          },
+                        ),
+                      ],
                     ),
                   ),
                 ],

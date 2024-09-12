@@ -137,7 +137,7 @@ class _AddPlayerScreenState extends ConsumerState<AddPlayerScreen> {
                                 vertical: kheight * 0.02),
                             width: double.infinity,
                             decoration: BoxDecoration(
-                                color: Color.fromARGB(57, 82, 81, 81),
+                                color: const Color.fromARGB(57, 82, 81, 81),
                                 borderRadius: BorderRadius.circular(5)),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -155,15 +155,17 @@ class _AddPlayerScreenState extends ConsumerState<AddPlayerScreen> {
                                                   'assets/images/coach_images/Avatar.png')
                                               as ImageProvider,
                                     ),
-                                    SizedBox(width: kwidth*0.02,),
+                                    SizedBox(
+                                      width: kwidth * 0.02,
+                                    ),
                                     Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
                                         CustomText(
                                           text: "Ruo Chio",
-                                          fontSize:
-                                              getResponsiveFontSize(context, 16),
+                                          fontSize: getResponsiveFontSize(
+                                              context, 16),
                                           color: white,
                                           fontWeight: FontWeight.normal,
                                         ),
@@ -190,30 +192,29 @@ class _AddPlayerScreenState extends ConsumerState<AddPlayerScreen> {
                                             ),
                                           ),
                                         ),
-                                       
                                       ],
                                     ),
-                                    
                                   ],
-                                ), Row(
+                                ),
+                                Row(
                                   crossAxisAlignment: CrossAxisAlignment.center,
-                                          children: [
-                                            Icon(
-                                              Icons.location_on_outlined,
-                                              color: white,
-                                              size: kwidth * 0.04,
-                                            ),
-                                            SizedBox(width: kwidth * 0.02),
-                                            CustomText(
-                                              text: "Kuala Lumpur",
-                                              fontSize: getResponsiveFontSize(
-                                                  context, 12),
-                                              color: grey,
-                                              overflow: TextOverflow.ellipsis,
-                                              fontWeight: FontWeight.normal,
-                                            ),
-                                          ],
-                                        )
+                                  children: [
+                                    Icon(
+                                      Icons.location_on_outlined,
+                                      color: white,
+                                      size: kwidth * 0.04,
+                                    ),
+                                    SizedBox(width: kwidth * 0.02),
+                                    CustomText(
+                                      text: "Kuala Lumpur",
+                                      fontSize:
+                                          getResponsiveFontSize(context, 12),
+                                      color: grey,
+                                      overflow: TextOverflow.ellipsis,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                                  ],
+                                )
                               ],
                             ),
                           ),

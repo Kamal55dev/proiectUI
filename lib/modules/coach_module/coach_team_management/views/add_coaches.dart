@@ -137,7 +137,7 @@ class _AddPlayerScreenState extends ConsumerState<AddCoachesScreen> {
                                 vertical: kheight * 0.02),
                             width: double.infinity,
                             decoration: BoxDecoration(
-                                color: Color.fromARGB(57, 82, 81, 81),
+                                color: const Color.fromARGB(57, 82, 81, 81),
                                 borderRadius: BorderRadius.circular(5)),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -155,7 +155,9 @@ class _AddPlayerScreenState extends ConsumerState<AddCoachesScreen> {
                                                   'assets/images/coach_images/Avatar.png')
                                               as ImageProvider,
                                     ),
-                                    SizedBox(width: kwidth*0.02,),
+                                    SizedBox(
+                                      width: kwidth * 0.02,
+                                    ),
                                     Center(
                                       child: CustomText(
                                         text: "Ruo Chio",
@@ -165,9 +167,8 @@ class _AddPlayerScreenState extends ConsumerState<AddCoachesScreen> {
                                         fontWeight: FontWeight.normal,
                                       ),
                                     ),
-                                    
                                   ],
-                                ), 
+                                ),
                               ],
                             ),
                           ),

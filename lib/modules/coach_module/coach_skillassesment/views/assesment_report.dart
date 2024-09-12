@@ -173,7 +173,7 @@ class AssesmentReportScreen extends ConsumerWidget {
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Padding(
-                                            padding: EdgeInsets.all(16.0),
+                                            padding: const EdgeInsets.all(16.0),
                                             child: Text(
                                               'Add Comment',
                                               style: TextStyle(
@@ -281,7 +281,7 @@ class AssesmentReportScreen extends ConsumerWidget {
                                 Column(
                                   children: [
                                     CustomText(
-                                      text: '$comment',
+                                      text: comment,
                                       color: white,
                                       fontSize:
                                           getResponsiveFontSize(context, 14),
@@ -347,7 +347,8 @@ class AssesmentReportScreen extends ConsumerWidget {
                       height: kheight * 0.015,
                     ),
                     Row(
-mainAxisAlignment: MainAxisAlignment.center,                      children: [
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
                         Icon(
                           Icons.add_comment_outlined,
                           color: grey,

@@ -63,8 +63,8 @@ class UserProfile_1 extends ConsumerWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          children: const [
+                        const Row(
+                          children: [
                             Icon(Icons.qr_code,
                                 color: Colors.white70, size: 20),
                             SizedBox(width: 8),

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final skillControllerProvider = ChangeNotifierProvider((ref) =>
-   SkillAssementController());
+final skillControllerProvider =
+    ChangeNotifierProvider((ref) => SkillAssementController());
 
 class SkillAssementController extends ChangeNotifier {
-  Map<int, double> _ratings = {};
-  Map<int, String> _comments = {}; // Track comments for each item
+  final Map<int, double> _ratings = {};
+  final Map<int, String> _comments = {}; // Track comments for each item
 
   // Method to get the rating for a specific item
   double getRating(int index) {

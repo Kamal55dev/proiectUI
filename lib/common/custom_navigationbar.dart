@@ -14,7 +14,7 @@ class CustomNavigationBar extends StatelessWidget
     final size = MediaQuery.of(context).size;
 
     return Container(
-      color: const Color(0xFF1C1C1C), // Background color of the AppBar
+      // color: const Color(0xFF1C1C1C), // Background color of the AppBar
       child: Column(
         mainAxisSize: MainAxisSize.min, // Adjust size to minimum required
         children: [
@@ -32,14 +32,14 @@ class CustomNavigationBar extends StatelessWidget
                       Colors.grey, // Background color of the avatar
                   radius: size.width * 0.1, // Responsive radius
                   backgroundImage: const AssetImage(
-                      'assets/images/user_images/Avatar.png'), // Your avatar image
+                      'assets/images/profile_image/Avatar.png'), // Your avatar image
                 ),
               ),
               title: CustomText(
                 text: 'RAK',
                 textAlign: TextAlign.center,
-                fontSize: getResponsiveFontSize(
-                    context, size.width * 0.05), // Responsive font size
+                fontSize:
+                    getResponsiveFontSize(context, 18), // Responsive font size
                 fontWeight: FontWeight.w600,
                 color: white,
               ),

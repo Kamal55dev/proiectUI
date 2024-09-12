@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-
-
 final eventControllerProvider =
     ChangeNotifierProvider((ref) => EventController());
 final dropdownValueProvider = StateProvider<String?>((ref) => null);
@@ -14,15 +12,14 @@ class EventController extends ChangeNotifier {
   final TextEditingController eventController = TextEditingController();
   final TextEditingController searchTextController = TextEditingController();
   final addressController = TextEditingController();
-     bool _isSwitchOn = false;
+  bool _isSwitchOn = false;
 
   bool get isSwitchOn => _isSwitchOn;
 
   void toggleSwitch(bool value) {
     _isSwitchOn = value;
-    notifyListeners(); 
+    notifyListeners();
   }
-
 
   // final EventServices _eventServices;
   // final DataStorage _dataStorage;
@@ -201,9 +198,9 @@ class EventController extends ChangeNotifier {
   //   notifyListeners();
   // }
 
-  List<String> _teamName = [];
+  final List<String> _teamName = [];
   List<String> get teamName => _teamName;
-  List<int> _teamId = [];
+  final List<int> _teamId = [];
   List<int> get teamId => _teamId;
 
   // Future<void> getTeams() async {
@@ -354,7 +351,7 @@ class EventController extends ChangeNotifier {
   //       // Format the startDate and endDate
   //       final String formattedStartDate = formatter.format(_startDateTime!);
   //       final String formattedEndDate = formatter.format(_endDateTime!);
-       
+
   //       List<int> participantIds = _selectedParticipants.map((participant) => participant.id).toList();
 
   //       final eventData = Event(

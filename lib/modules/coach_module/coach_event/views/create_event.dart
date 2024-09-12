@@ -104,7 +104,7 @@ class _EventCreateScreenState extends ConsumerState<EventCreateScreen> {
                 ),
                 value: selectedValue,
                 borderRadius: BorderRadius.circular(10),
-                items: [
+                items: const [
                   'Abc',
                   'Abc',
                   'Abc',
@@ -140,19 +140,20 @@ class _EventCreateScreenState extends ConsumerState<EventCreateScreen> {
                     fontWeight: FontWeight.w400,
                   ),
                   Transform.scale(
-          scale: 0.7,
-          child: Switch(
-            value: eventcontroller.isSwitchOn,
-            onChanged: (bool newValue) {
-              ref.read(eventControllerProvider).toggleSwitch(newValue);
-            },
-           thumbColor: const WidgetStatePropertyAll(black),
-            activeColor:white, 
-            inactiveTrackColor:grey, 
-            activeTrackColor: white,
-           
-          ),
-        ),
+                    scale: 0.7,
+                    child: Switch(
+                      value: eventcontroller.isSwitchOn,
+                      onChanged: (bool newValue) {
+                        ref
+                            .read(eventControllerProvider)
+                            .toggleSwitch(newValue);
+                      },
+                      thumbColor: const WidgetStatePropertyAll(black),
+                      activeColor: white,
+                      inactiveTrackColor: grey,
+                      activeTrackColor: white,
+                    ),
+                  ),
                 ],
               ),
               SizedBox(
