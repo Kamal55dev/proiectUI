@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../controller/provider/Skill_assessment.dart';
-import '../modules/player_models/skill_assessment_models.dart';
+import '../modules/players_models/skill_assessment_models.dart';
 
 class SkillAssessment extends ConsumerWidget {
   const SkillAssessment({super.key});
@@ -17,7 +17,7 @@ class SkillAssessment extends ConsumerWidget {
         elevation: 0,
         leading: IconButton(
           onPressed:(){
-
+            Navigator.of(context).pop();
           } , 
           icon:const Icon(Icons.arrow_back), 
           ) ,
@@ -73,7 +73,7 @@ class SkillAssessment extends ConsumerWidget {
         children: [
           const CircleAvatar(
             radius: 24,
-            backgroundImage: AssetImage('assets/images/Ellipse 100.png'),
+            backgroundImage: AssetImage('assets/images/profile_image/coach_player_home_profile_image.png'),
           ),
           const SizedBox(width: 16),
           Column(
@@ -225,7 +225,7 @@ class SkillAssessment extends ConsumerWidget {
                 children: [
                   const CircleAvatar(
                     radius: 12,
-                    backgroundImage: AssetImage('assets/images/Frame 2085661773.png'),
+                    backgroundImage: AssetImage('assets/images/profile_image/jaya_prakash_profile_image.png'),
                   ),
                   const SizedBox(width: 8),
                   Expanded(
@@ -292,7 +292,7 @@ class SkillAssessment extends ConsumerWidget {
               ],
             ),
             Image.asset(
-              'assets/images/file-fav-dynamic-premium.png',
+              'assets/images/player_images/skill_assessment_image.png',
               height: 145,
               width: 145,
             ),
