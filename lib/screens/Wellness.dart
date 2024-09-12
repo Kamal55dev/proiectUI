@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../controller/provider/Wellness_provider.dart';
-import '../modules/player_models/Wellness_model.dart';
+import '../modules/players_models/Wellness_model.dart';
 
 class WellnessScreen extends ConsumerStatefulWidget {
   const WellnessScreen({super.key});
@@ -242,7 +242,7 @@ Widget _buildLabelCard(String label) {
         children: [
           const CircleAvatar(
             radius: 24,
-            backgroundImage: AssetImage('assets/images/profile_image/Ellipse 100.png'),
+            backgroundImage: AssetImage('assets/images/profile_image/coach_player_home_profile_image.png'),
           ),
           const SizedBox(width: 16),
           Column(

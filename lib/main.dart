@@ -1,9 +1,11 @@
+import 'package:badminton/modules/authentication/signin_module/splash_scrn.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'modules/authentication/signin_module/splash_scrn.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  runApp(const ProviderScope(child:MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -11,16 +13,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ProviderScope(
-      // Wrap the MaterialApp with ProviderScope
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'My App',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: const SplashScreen(), // Set your initial screen here
-      ),
-    );
-  }
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'My App',
+      theme: ThemeData(fontFamily: "Poppins"),
+      home: const SplashScreen(),
+);
+}
 }

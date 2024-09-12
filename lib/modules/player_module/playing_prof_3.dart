@@ -1,3 +1,4 @@
+import 'package:badminton/modules/player_module/player_rak/view/player_rak_main_screen_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../controllers/player_prof_provider/player_prof_provider_3.dart';
@@ -123,7 +124,7 @@ class PlayingProf_3 extends ConsumerWidget {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>
-                                          const PlayingProf_3(),
+                                          const RAKMainScreen(),
                                     ));
                               }
                             : null,

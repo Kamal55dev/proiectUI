@@ -1,7 +1,7 @@
 
 import 'package:badminton/screens/Wellness.dart';
-import 'package:badminton/screens/rak_curriculum/rak_curriculum.dart';
-import 'package:badminton/screens/rak_podium.dart';
+import 'package:badminton/modules/player_module/player_rak/view/coach_player_curriculum.dart';
+import 'package:badminton/modules/player_module/player_rak/view/rak_podium.dart';
 import 'package:badminton/screens/skill_assessment.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -52,7 +52,7 @@ class PlayerDashboard extends ConsumerWidget {
                   children: [
                     const CircleAvatar(
                   radius: 30,
-                  backgroundImage: AssetImage('assets/images/profile_image/Ellipse 100.png'), // Placeholder image
+                  backgroundImage: AssetImage('assets/images/profile_image/coach_player_home_profile_image.png'), // Placeholder image
                 ),
                 const SizedBox(width: 12),
                 Column(
@@ -107,7 +107,7 @@ class PlayerDashboard extends ConsumerWidget {
           width: 470,
           decoration: BoxDecoration(
             image: const DecorationImage(
-              image: AssetImage('assets/images/player_images/Subtract.png'),  // Replace with your image path
+              image: AssetImage('assets/images/player_images/rak_curriculam_image.png'),  // Replace with your image path
               fit: BoxFit.cover,
             ),
             borderRadius: BorderRadius.circular(10),  // Rounded corners
@@ -129,7 +129,7 @@ class PlayerDashboard extends ConsumerWidget {
               Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const CurriculumPage(),
+                      builder: (context) => const CoachPlayerCurriculum(),
                     ),
               );
             },
@@ -212,7 +212,7 @@ class PlayerDashboard extends ConsumerWidget {
             ),
             // Trophy image above flash
             Image.asset(
-              'assets/images/player_images/trophy-dynamic-premium.png',  // Replace with your image path
+              'assets/images/player_images/rak_podium_image.png',  // Replace with your image path
               height: 145,
               width: 145,
             ),
@@ -282,7 +282,7 @@ class PlayerDashboard extends ConsumerWidget {
             ),
             // Skill assessment image above flash
             Image.asset(
-              'assets/images/player_images/file-fav-dynamic-premium.png',  // Replace with your image path
+              'assets/images/player_images/skill_assessment_image.png',  // Replace with your image path
               height: 145,
               width: 145,
             ),
@@ -468,7 +468,7 @@ Widget _buildRecentMatchesSection(BuildContext context) {
               children: [
                 CircleAvatar(
                   radius: 20,
-                  backgroundImage: AssetImage('assets/images/profile_image/Ellipse 100.png'),
+                  backgroundImage: AssetImage('assets/images/profile_image/coach_player_home_profile_image.png'),
                 ),
                 SizedBox(width: 8),
                 Column(
@@ -550,7 +550,7 @@ Widget _buildRecentMatchesSection(BuildContext context) {
               children: [
                 CircleAvatar(
                   radius: 20,
-                  backgroundImage: AssetImage('assets/images/profile_image/Ellipse 100.png'),
+                  backgroundImage: AssetImage('assets/images/profile_image/coach_player_home_profile_image.png'),
                 ),
                 SizedBox(width: 8),
                 Column(

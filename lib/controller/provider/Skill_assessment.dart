@@ -2,7 +2,7 @@
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../modules/player_models/skill_assessment_models.dart';
+import '../../modules/players_models/skill_assessment_models.dart';
 
 // ignore: non_constant_identifier_names
 final SkillAssessmentProvider = Provider<List<Subjects>>((ref) {

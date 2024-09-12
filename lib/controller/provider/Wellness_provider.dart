@@ -46,7 +46,7 @@
 // Provider for Wellness parameters (state management)
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../modules/player_models/Wellness_model.dart';
+import '../../modules/players_models/Wellness_model.dart';
 
 
 final wellnessProvider = Provider<List<WellnessParameter>>((ref) {
