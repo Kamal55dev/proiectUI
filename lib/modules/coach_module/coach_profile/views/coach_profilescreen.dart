@@ -2,6 +2,7 @@ import 'package:badminton/common/common_font_size.dart';
 import 'package:badminton/common/common_text.dart';
 import 'package:badminton/core/utils/colors.dart';
 import 'package:badminton/modules/coach_module/coach_profile/controllers/coach_profile_controller.dart';
+import 'package:badminton/modules/coach_module/coach_profile/views/coach_license.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -15,32 +16,40 @@ class CoachProfile extends ConsumerWidget {
     final kheight = MediaQuery.of(context).size.height;
     final kwidth = MediaQuery.of(context).size.width;
     final profileController = ref.watch(coachprofilecontrollerProvider);
+    List<String> heading = [
+      'Less than a year',
+      '1 to 2 years',
+      '2 to 4 years',
+      'More than 4 years'
+    ];
 
     return Scaffold(
+      backgroundColor: bgColor,
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: bgColor,
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: bgColor,
-          title: CustomText(
-            text: 'Coaching Profile',
-            color: white,
-            fontSize: getResponsiveFontSize(context, 18),
-            fontWeight: FontWeight.w600,
-          ),
-          actions: [
-            IconButton(
-              onPressed: () {
-                Navigator.pop(context, false);
-              },
-              icon: Icon(
-                Icons.clear_rounded,
-                color: white,
-                size: kwidth * 0.07,
-              ),
-            ),
-          ],
+        title: CustomText(
+          text: 'Coaching Profile',
+          color: white,
+          fontSize: getResponsiveFontSize(context, 18),
+          fontWeight: FontWeight.w600,
         ),
-        body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.pop(context, false);
+            },
+            icon: Icon(
+              Icons.clear_rounded,
+              color: white,
+              size: kwidth * 0.07,
+            ),
+          ),
+        ],
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
           SizedBox(
             height: kheight * 0.02,
           ),
@@ -63,7 +72,7 @@ class CoachProfile extends ConsumerWidget {
               ),
               Padding(
                 padding: EdgeInsets.symmetric(
-                    horizontal: kwidth * 0.04, vertical: kheight * 0.045),
+                    horizontal: kwidth * 0.02, vertical: kheight * 0.045),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -76,36 +85,133 @@ class CoachProfile extends ConsumerWidget {
                     SizedBox(
                       height: kheight * 0.02,
                     ),
-                    SizedBox(
-                      height: kheight * 0.05,
-                      child: ListView.builder(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 4,
-                          itemBuilder: (context, index) {
-                            return Container(
-                              margin: EdgeInsets.only(left: kwidth * 0.02),
-                              height: kheight * 0.03,
-                              width: kwidth * 0.4,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: primaryColor,
-                                  border: Border.all(color: grey)),
-                              child: CustomText(
-                                text: 'How long',
-                                color: white,
-                                fontSize: getResponsiveFontSize(context, 16),
-                                fontWeight: FontWeight.w400,
-                                textAlign: TextAlign.center,
-                              ),
-                            );
+                    Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: List.generate(3, (index) {
+                            return buildSelectableItem(context, kwidth, kheight,
+                                index, profileController, heading);
                           }),
-                    )
+                        ),
+                        SizedBox(height: kheight * 0.02),
+                        Row(
+                          children: [
+                            buildSelectableItem(context, kwidth, kheight, 3,
+                                profileController, heading),
+                          ],
+                        ),
+                        SizedBox(
+                          height: kheight * 0.05,
+                        ),
+                        Align(
+                          alignment: Alignment.bottomRight,
+                          child: GestureDetector(
+                            onTap: profileController.selectedIndex == -1
+                                ? null
+                                : () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const CoachProfileLicense(),
+                                        ));
+                                  },
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: kwidth * 0.035),
+                              margin: EdgeInsets.only(left: kwidth * 0.02),
+                              height: kheight * 0.05,
+                              width: kwidth * 0.23,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: profileController.selectedIndex == -1
+                                      ? grey
+                                      : primaryColor,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                                color: profileController.selectedIndex == -1
+                                    ? Colors.transparent
+                                    : primaryColor,
+                              ),
+                              child: Row(
+                                children: [
+                                  CustomText(
+                                    text: 'Next',
+                                    color: profileController.selectedIndex == -1
+                                        ? grey
+                                        : white,
+                                    fontSize:
+                                        getResponsiveFontSize(context, 14),
+                                    fontWeight: FontWeight.w400,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  SizedBox(
+                                    width: kwidth * 0.02,
+                                  ),
+                                  Icon(
+                                    Icons.arrow_forward,
+                                    color: profileController.selectedIndex == -1
+                                        ? grey
+                                        : white,
+                                    size: kwidth * 0.05,
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
             ],
           ),
-        ]));
+        ],
+      ),
+    );
+  }
+
+  Widget buildSelectableItem(
+    BuildContext context,
+    double kwidth,
+    double kheight,
+    int index,
+    var profileController,
+    List<String> heading,
+  ) {
+    return GestureDetector(
+      onTap: () {
+        profileController.selectItem(index);
+      },
+      child: IntrinsicWidth(
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: kwidth * 0.02),
+          margin: EdgeInsets.only(left: kwidth * 0.02),
+          height: kheight * 0.05,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: profileController.selectedIndex == index
+                ? secondaryColor
+                : Colors.transparent,
+            border: Border.all(
+              color: profileController.selectedIndex == index
+                  ? secondaryColor
+                  : secondaryColor,
+              width: 2.0,
+            ),
+          ),
+          alignment: Alignment.center,
+          child: CustomText(
+            text: heading[index],
+            color: profileController.selectedIndex == index ? black : white,
+            fontSize: getResponsiveFontSize(context, 14),
+            fontWeight: FontWeight.w400,
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ),
+    );
   }
 }

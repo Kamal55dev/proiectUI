@@ -1,7 +1,7 @@
 import 'package:badminton/common/common_font_size.dart';
 import 'package:badminton/common/common_text.dart';
 import 'package:badminton/common/custom_navigationbar.dart';
-import 'package:badminton/modules/orientation_module/orientation_home/orientation_dashboard.dart';
+// import 'package:badminton/modules/orientation_module/orientation_home/orientation_dashboard.dart';
 import 'package:badminton/modules/orientation_module/orientation_request_lists/views/requester_list.dart';
 import 'package:flutter/material.dart';
 
@@ -114,44 +114,44 @@ class _OrientationHomeState extends State<OrientationHome> {
                       crossAxisSpacing: size.width * 0.04,
                       childAspectRatio: size.width / (size.height * 0.17),
                       children: [
-                        DashboardCard(
-                          imagePath:
-                              'assets/images/icon_images/arcticons_warden.png',
-                          label: 'Academies',
-                          onPressed: () {},
-                        ),
-                        DashboardCard(
-                          imagePath:
-                              'assets/images/icon_images/carbon_event.png',
-                          label: 'Events',
-                          onPressed: () {},
-                        ),
-                        DashboardCard(
-                          imagePath: 'assets/images/icon_images/Player.png',
-                          label: 'Players',
-                          onPressed: () {},
-                        ),
-                        DashboardCard(
-                          imagePath: 'assets/images/icon_images/Coach.png',
-                          label: 'Coaches',
-                          onPressed: () {},
-                        ),
-                        DashboardCard(
-                          imagePath: 'assets/images/icon_images/money.png',
-                          label: 'Subscriptions',
-                          onPressed: () {},
-                        ),
-                        DashboardCard(
-                          imagePath: 'assets/images/icon_images/Group.png',
-                          label: 'Requests',
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const RequesterList()),
-                            );
-                          },
-                        ),
+                        // DashboardCard(
+                        //   imagePath:
+                        //       'assets/images/icon_images/arcticons_warden.png',
+                        //   label: 'Academies',
+                        //   onPressed: () {},
+                        // ),
+                        // DashboardCard(
+                        //   imagePath:
+                        //       'assets/images/icon_images/carbon_event.png',
+                        //   label: 'Events',
+                        //   onPressed: () {},
+                        // ),
+                        // DashboardCard(
+                        //   imagePath: 'assets/images/icon_images/Player.png',
+                        //   label: 'Players',
+                        //   onPressed: () {},
+                        // ),
+                        // DashboardCard(
+                        //   imagePath: 'assets/images/icon_images/Coach.png',
+                        //   label: 'Coaches',
+                        //   onPressed: () {},
+                        // ),
+                        // DashboardCard(
+                        //   imagePath: 'assets/images/icon_images/money.png',
+                        //   label: 'Subscriptions',
+                        //   onPressed: () {},
+                        // ),
+                        // DashboardCard(
+                        //   imagePath: 'assets/images/icon_images/Group.png',
+                        //   label: 'Requests',
+                        //   onPressed: () {
+                        //     Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //           builder: (context) => const RequesterList()),
+                        //     );
+                        //   },
+                        // ),
                       ],
                     ),
                   ),

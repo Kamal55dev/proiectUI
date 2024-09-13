@@ -5,7 +5,6 @@ import 'package:badminton/modules/coach_module/coach_team_management/views/add_p
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-// TeamDetailsScreen using ConsumerStatefulWidget
 class PlayersScreen extends ConsumerStatefulWidget {
   const PlayersScreen({super.key});
 
@@ -32,12 +31,10 @@ class _PlayersScreenState extends ConsumerState<PlayersScreen> {
           GestureDetector(
             onTap: () {
               Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const AddPlayerScreen(
-                             
-                            )),
-                  );
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const AddPlayerScreen()),
+              );
             },
             child: CustomText(
               text: 'Add Players',
@@ -48,66 +45,64 @@ class _PlayersScreenState extends ConsumerState<PlayersScreen> {
           ),
         ],
       ),
-      SizedBox(height: kheight*0.02,),
-      // kHeight(context, 0*06),
-   SizedBox(
-  child: ListView.builder(
-    shrinkWrap: true,
-    itemCount: 10,
-    physics: const ScrollPhysics(),
-    itemBuilder: (BuildContext context, index) {
-      return Column(
-        children: [
-          Container(
-            width: double.infinity,
-            height: kheight * 0.12,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.transparent,
-            ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+      SizedBox(
+        height: kheight * 0.02,
+      ),
+      SizedBox(
+        child: ListView.builder(
+          shrinkWrap: true,
+          itemCount: 10,
+          physics: const ScrollPhysics(),
+          itemBuilder: (BuildContext context, index) {
+            return Column(
               children: [
-                Center(
-                  child: CircleAvatar(
-                    radius: kwidth * 0.05,
-                    backgroundImage: const AssetImage(
-                      'assets/images/coach_images/Avatar.png',
-                    ) as ImageProvider,
+                Container(
+                  width: double.infinity,
+                  height: kheight * 0.12,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.transparent,
+                  ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Center(
+                        child: CircleAvatar(
+                          radius: kwidth * 0.05,
+                          backgroundImage: const AssetImage(
+                            'assets/images/coach_images/Avatar.png',
+                          ) as ImageProvider,
+                        ),
+                      ),
+                      SizedBox(width: kwidth * 0.04),
+                      Center(
+                        child: CustomText(
+                          text: "players.name",
+                          color: white,
+                          fontSize: getResponsiveFontSize(context, 14),
+                        ),
+                      ),
+                      const Spacer(),
+                      Center(
+                        child: Icon(
+                          Icons.remove_circle_outline,
+                          color: white,
+                          size: kwidth * 0.06,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                SizedBox(width: kwidth * 0.04),
-                Center(
-                  child: CustomText(
-                    text: "players.name",
-                    color: white,
-                    fontSize: getResponsiveFontSize(context, 14),
-                  ),
-                ),
-                const Spacer(),
-                Center(
-                  child: Icon(
-                    Icons.remove_circle_outline,
-                    color: white,
-                    size: kwidth * 0.06,
-                  ),
+                Divider(
+                  color: Colors.grey,
+                  thickness: 1,
+                  height: kheight * 0.001,
                 ),
               ],
-            ),
-          ),
-        
-            Divider(
-              color: Colors.grey, 
-              thickness: 1,
-              height: kheight*0.001, 
-            ),
-        ],
-      );
-    },
-  ),
-)
-
-
+            );
+          },
+        ),
+      )
     ]);
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:developer';
+import 'package:badminton/modules/coach_module/coach_home/coach_home_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -8,16 +10,30 @@ import '../../../authentication/signup_module/signup.dart';
 final loginControllerProvider = Provider((ref) => LoginController());
 
 class LoginController {
-  get emailOrMobileController => null;
+  final TextEditingController emailOrMobileController = TextEditingController();
 
   void login(BuildContext context) {
     if (kDebugMode) {
       print("User logged in");
     }
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const Login2()),
-    );
+    log(emailOrMobileController.text);
+    if (emailOrMobileController.text == 'coach@gmail.com') {
+      log("Comes here");
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const RAKMainScreen()),
+      );
+    } else if (emailOrMobileController.text == 'player@gmail.com') {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const RAKMainScreen()),
+      );
+    } else {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const Login2()),
+      );
+    }
   }
 
   void navigateToCreateAccount(BuildContext context) {

@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../modules/player_models/rak_podium_model.dart';
+import '../../modules/players_models/rak_podium_model.dart';
 
 
 final userProvider = Provider<User>((ref) {

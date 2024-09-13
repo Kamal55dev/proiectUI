@@ -12,133 +12,150 @@ class Login extends ConsumerWidget {
 
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Stack(
-        children: [
-          // Background Image at the top
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            child: Image.asset(
-              'assets/images/bg_images/Looper Bg image.png',
-              fit: BoxFit.cover,
-            ),
-          ),
-          // Foreground Content
-          Center(
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          final screenWidth = constraints.maxWidth;
+          final screenHeight = constraints.maxHeight;
+
+          return SingleChildScrollView(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(height: 270),
-
-                // Logo
-                Image.asset(
-                  'assets/images/Group 1171277302.png',
-                  width: 140,
-                  height: 131,
-                  color: Colors.white,
-                ),
-                const SizedBox(height: 80),
-
-                // Log In Button
-                ElevatedButton(
-                  onPressed: () => loginController.login(context),
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(horizontal: 130, vertical: 15),
-                    backgroundColor: const Color.fromARGB(255, 218, 165, 32), // Gold color
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
-                  child: const Text(
-                    'Log in',
-                    style: TextStyle(fontSize: 18, color: Colors.white, fontFamily: 'Poppins'),
-                  ),
-                ),
-                const SizedBox(height: 20),
-
-                // Create Account Link
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                Stack(
                   children: [
-                    const Text(
-                      'New User ? ',
-                      style: TextStyle(color: Colors.white),
+                    // Background Image at the top
+                    Positioned(
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      child: Image.asset(
+                        'assets/images/bg_images/Looper BG.png',
+                        fit: BoxFit.cover,
+                        height: screenHeight * 0.5, // 40% of screen height
+                        width: screenWidth,
+                      ),
                     ),
-                    GestureDetector(
-                      onTap: () => loginController.navigateToCreateAccount(context),
-                      child: const Text(
-                        'Create Account',
-                        style: TextStyle(
-                          color: Color(0xFFDAA520), // Gold color
-                          fontWeight: FontWeight.bold,
-                        ),
+                    // Foreground Content
+                    Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(height: screenHeight * 0.35), // Spacer proportional to screen height
+
+                          // Logo
+                          Image.asset(
+                            'assets/images/Group 1171277302.png',
+                            width: screenWidth * 0.35, // 35% of screen width
+                            height: screenWidth * 0.35, // Maintain aspect ratio
+                            color: Colors.white,
+                          ),
+                          SizedBox(height: screenHeight * 0.1), // Spacer proportional to screen height
+
+                          // Log In Button
+                          ElevatedButton(
+                            onPressed: () => loginController.login(context),
+                            style: ElevatedButton.styleFrom(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: screenWidth * 0.3, vertical: 15), // 30% of screen width
+                              backgroundColor: const Color.fromARGB(255, 218, 165, 32), // Gold color
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                            ),
+                            child: const Text(
+                              'Log in',
+                              style: TextStyle(fontSize: 18, color: Colors.white, fontFamily: 'Poppins'),
+                            ),
+                          ),
+                          SizedBox(height: screenHeight * 0.02), // Spacer proportional to screen height
+
+                          // Create Account Link
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                'New User ? ',
+                                style: TextStyle(color: Colors.white, fontSize: 18),
+                              ),
+                              GestureDetector(
+                                onTap: () => loginController.navigateToCreateAccount(context),
+                                child: const Text(
+                                  'Create Account',
+                                  style: TextStyle(
+                                    color: Color(0xFFDAA520), // Gold color
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: screenHeight * 0.02), // Spacer proportional to screen height
+
+                          // Social Media Login Options
+                          const Text(
+                            '---- or ----',
+                            style: TextStyle(color: Colors.white, fontSize: 16),
+                          ),
+                          SizedBox(height: screenHeight * 0.01), // Spacer proportional to screen height
+                          const Text(
+                            'Sign Up using',
+                            style: TextStyle(color: Colors.white, fontSize: 16),
+                          ),
+                          SizedBox(height: screenHeight * 0.03), // Spacer proportional to screen height
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              // Google Icon
+                              IconButton(
+                                icon: Image.asset('assets/images/google.png'),
+                                iconSize: screenWidth * 0.1, // 10% of screen width
+                                onPressed: loginController.signUpWithGoogle,
+                              ),
+                              SizedBox(width: screenWidth * 0.05), // Spacer proportional to screen width
+                              // Facebook Icon
+                              IconButton(
+                                icon: Image.asset('assets/images/fb.png'),
+                                iconSize: screenWidth * 0.1, // 10% of screen width
+                                onPressed: loginController.signUpWithFacebook,
+                              ),
+                              SizedBox(width: screenWidth * 0.05), // Spacer proportional to screen width
+                              // Apple Icon
+                              IconButton(
+                                icon: Image.asset('assets/images/ios.png'),
+                                iconSize: screenWidth * 0.1, // 10% of screen width
+                                onPressed: loginController.signUpWithApple,
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: screenHeight * 0.02), // Spacer proportional to screen height
+
+                          // Footer Text
+                          const Text(
+                            'Innovation by',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 16,
+                            ),
+                          ),
+                          SizedBox(height: screenHeight * 0.01), // Spacer proportional to screen height
+                          const Text(
+                            'Ulchemy',
+                            style: TextStyle(
+                              color: Color(0xFFDAA520), // Gold color
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: screenHeight * 0.05), // Spacer proportional to screen height
+                        ],
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 20),
-
-                // Social Media Login Options
-                const Text(
-                  'or',
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                ),
-                const SizedBox(height: 10),
-                const Text(
-                  'Sign Up using',
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                ),
-                const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // Google Icon
-                    IconButton(
-                      icon: Image.asset('assets/images/google.png'),
-                      iconSize: 40,
-                      onPressed: loginController.signUpWithGoogle,
-                    ),
-                    const SizedBox(width: 20),
-                    // Facebook Icon
-                    IconButton(
-                      icon: Image.asset('assets/images/fb.png'),
-                      iconSize: 40,
-                      onPressed: loginController.signUpWithFacebook,
-                    ),
-                    const SizedBox(width: 20),
-                    // Apple Icon
-                    IconButton(
-                      icon: Image.asset('assets/images/ios.png'),
-                      iconSize: 40,
-                      onPressed: loginController.signUpWithApple,
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 7),
-
-                // Footer Text
-                const Text(
-                  'Innovation by',
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 16,
-                  ),
-                ),
-                const SizedBox(height: 3),
-                const Text(
-                  'Ulchemy',
-                  style: TextStyle(
-                    color: Color(0xFFDAA520), // Gold color
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 30),
               ],
             ),
-          ),
-        ],
+          );
+        },
       ),
     );
   }

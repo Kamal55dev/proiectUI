@@ -1,7 +1,7 @@
 // providers/match_provider.dart
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../modules/player_models/Match_scoring_model.dart';
+import '../../modules/players_models/Match_scoring_model.dart';
 
 class MatchNotifier extends StateNotifier<Match> {
   MatchNotifier()

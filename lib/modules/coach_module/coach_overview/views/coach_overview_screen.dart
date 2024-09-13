@@ -3,9 +3,7 @@ import 'package:badminton/common/common_padding.dart';
 import 'package:badminton/common/common_size.dart';
 import 'package:badminton/common/common_text.dart';
 import 'package:badminton/core/utils/colors.dart';
-import 'package:badminton/modules/coach_module/coach_attendance/views/coach_attendance_screen.dart';
 import 'package:badminton/modules/coach_module/coach_overview/widgets/coach_container_widget.dart';
-import 'package:badminton/modules/coach_module/coach_wellness/views/coach_wellness_screen.dart';
 import 'package:flutter/material.dart';
 
 class CoachOverviewScreen extends StatelessWidget {
@@ -85,9 +83,9 @@ class CoachOverviewScreen extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const CoachAttendanceScreen(),
-                          ));
+                          // Navigator.of(context).push(MaterialPageRoute(
+                          //   builder: (context) => const CoachAttendanceScreen(),
+                          // ));
                         },
                         child: const CoachTeamContainerWidget(
                             0.03,
@@ -100,9 +98,9 @@ class CoachOverviewScreen extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const CoachWellnessScreen(),
-                          ));
+                          // Navigator.of(context).push(MaterialPageRoute(
+                          //   builder: (context) => const CoachWellnessScreen(),
+                          // ));
                         },
                         child: const CoachTeamContainerWidget(
                             0.05,

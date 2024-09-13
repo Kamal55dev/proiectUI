@@ -17,11 +17,16 @@ class PlayingProfile extends StatelessWidget {
           backgroundColor: const Color(0xFF1C1C1E), // Dark background color
           body: Stack(
             children: [
-              Positioned.fill(
+              Positioned(
+                top: 20,
+                left: 0,
+                right: 0,
                 child: Image.asset(
-                  'assets/images/bg_images/Looper Bg image.png', // Replace with your background image path
-                  fit: BoxFit.cover,
-                  // color: Colors.transparent.withOpacity(0.5),
+                  'assets/images/bg_images/Looper BG.png', // Background image path
+                  fit: BoxFit
+                      .cover, // Ensures the image covers the top of the screen
+                  height: MediaQuery.of(context).size.height *
+                      0.4, // Adjust height as needed
                 ),
               ),
               SafeArea(
@@ -47,7 +52,8 @@ class PlayingProfile extends StatelessWidget {
                                 ),
                               ),
                               IconButton(
-                                icon: const Icon(Icons.close, color: Colors.white),
+                                icon: const Icon(Icons.close,
+                                    color: Colors.white),
                                 onPressed: () {
                                   // Close or navigate away action
                                 },
@@ -65,7 +71,8 @@ class PlayingProfile extends StatelessWidget {
                           const SizedBox(height: 20),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: ['Beginner', 'Intermediate', 'Advance'].map((profile) {
+                            children: ['Beginner', 'Intermediate', 'Advance']
+                                .map((profile) {
                               return ChoiceChip(
                                 label: Text(profile),
                                 selected: selectedProfile == profile,
@@ -79,12 +86,15 @@ class PlayingProfile extends StatelessWidget {
                                 selectedColor: const Color(0xFFDAA520),
                                 backgroundColor: Colors.grey[800],
                                 labelStyle: TextStyle(
-                                  color: selectedProfile == profile ? Colors.black : Colors.white,
+                                  color: selectedProfile == profile
+                                      ? Colors.black
+                                      : Colors.white,
                                 ),
                                 side: const BorderSide(
                                   color: Colors.grey, // Border color
                                 ),
-                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20)),
                               );
                             }).toList(),
                           ),
@@ -100,16 +110,21 @@ class PlayingProfile extends StatelessWidget {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) => const Playing1(),
+                                            builder: (context) =>
+                                                const Playing1(),
                                           ));
                                     }
                                   : null,
                               style: ElevatedButton.styleFrom(
-                                foregroundColor: selectedProfile != null ? Colors.black : Colors.white.withOpacity(0.5),
-                                backgroundColor:
-                                    selectedProfile != null ? const Color(0xFFDAA520) : Colors.grey.withOpacity(0.3),
+                                foregroundColor: selectedProfile != null
+                                    ? Colors.black
+                                    : Colors.white.withOpacity(0.5),
+                                backgroundColor: selectedProfile != null
+                                    ? const Color(0xFFDAA520)
+                                    : Colors.grey.withOpacity(0.3),
                                 elevation: selectedProfile != null ? 5 : 0,
-                                padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 15, horizontal: 25),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
@@ -122,10 +137,10 @@ class PlayingProfile extends StatelessWidget {
                                     style: TextStyle(fontSize: 16),
                                   ),
                                   SizedBox(width: 8),
-                                  Icon(
-                                    Icons.arrow_forward,
-                                    size: 20,
-                                  ),
+                                  // Icon(
+                                  //   Icons.arrow_forward,
+                                  //   size: 20,
+                                  // ),
                                 ],
                               ),
                             ),
