@@ -86,7 +86,7 @@ class ProfileCardWidgetDivider extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 10), // Add some space before the divider
-          Divider(
+          const Divider(
             color: Colors.grey, // Set the divider color
             thickness: 1, // Set the divider thickness
           ),

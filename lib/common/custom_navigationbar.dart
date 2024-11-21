@@ -32,7 +32,7 @@ class CustomNavigationBar extends StatelessWidget
                       Colors.grey, // Background color of the avatar
                   radius: size.width * 0.1, // Responsive radius
                   backgroundImage: const AssetImage(
-                      'assets/images/profile_image/Avatar.png'), // Your avatar image
+                      'assets/images/profile_image/user_profile_image.png'), // Your avatar image
                 ),
               ),
               title: CustomText(

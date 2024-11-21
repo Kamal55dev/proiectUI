@@ -71,8 +71,10 @@ flutter:
     - assets/images/coach_images/
     - assets/images/profile_image/
     - assets/images/user_images/
+    - assets/images/icon_images/
     - assets/images/
     - assets/gif/
+
 
   
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -27,7 +27,7 @@ class _RequesterListViewState extends State<RequesterListView> {
       "level": "Beginner",
       "levelColor": Colors.blueAccent,
       "image":
-          'assets/images/profile_image/Ellipse.png', // Replace with your asset
+          'assets/images/profile_image/coach_player_home_profile_image.png', // Replace with your asset
     },
     {
       "name": "Lee Chong Wei",
@@ -35,7 +35,7 @@ class _RequesterListViewState extends State<RequesterListView> {
       "level": "Advance",
       "levelColor": Colors.orangeAccent,
       "image":
-          'assets/images/profile_image/Ellipse.png', // Replace with your asset
+          'assets/images/profile_image/Ellipse2.png', // Replace with your asset
     },
     {
       "name": "Lee Chong Wei",
@@ -43,7 +43,7 @@ class _RequesterListViewState extends State<RequesterListView> {
       "level": "intermediate",
       "levelColor": Colors.greenAccent,
       "image":
-          'assets/images/profile_image/Ellipse.png', // Replace with your asset
+          'assets/images/profile_image/Ellipse4.png', // Replace with your asset
     },
     {
       "name": "Lee Chong Wei",
@@ -51,7 +51,7 @@ class _RequesterListViewState extends State<RequesterListView> {
       "level": "Advance",
       "levelColor": Colors.purple,
       "image":
-          'assets/images/profile_image/Ellipse.png', // Replace with your asset
+          'assets/images/profile_image/Ellipse2.png', // Replace with your asset
     },
     {
       "name": "Lee Chong Wei",
@@ -59,7 +59,7 @@ class _RequesterListViewState extends State<RequesterListView> {
       "level": "Advance",
       "levelColor": Colors.blueAccent,
       "image":
-          'assets/images/profile_image/Ellipse.png', // Replace with your asset
+          'assets/images/profile_image/Ellipse2.png', // Replace with your asset
     },
     {
       "name": "Lee Chong Wei",
@@ -67,7 +67,7 @@ class _RequesterListViewState extends State<RequesterListView> {
       "level": "beginner",
       "levelColor": Colors.purple,
       "image":
-          'assets/images/profile_image/Ellipse.png', // Replace with your asset
+          'assets/images/profile_image/Ellipse1.png', // Replace with your asset
     },
     {
       "name": "Lee Chong Wei",
@@ -161,7 +161,7 @@ class _RequesterListViewState extends State<RequesterListView> {
                     kWidth(context, 0.01),
                     CustomText(
                       text: requester['location'],
-                      fontWeight: FontWeight.w200,
+                      fontWeight: FontWeight.w300,
                       color: Colors.white,
                       fontSize: getResponsiveFontSize(context, 12),
                     ),

@@ -1,7 +1,7 @@
 import 'package:badminton/common/common_size.dart';
+import 'package:badminton/modules/orientation_module/orientation_coach_connekt/views/coach_available.dart';
 import 'package:badminton/modules/orientation_module/orientation_coach_connekt/views/coach_connekt_screen.dart';
 import 'package:badminton/modules/orientation_module/orientation_reqsuccess_screen.dart';
-import 'package:badminton/modules/orientation_module/orientation_request_lists/views/requester_list.dart';
 import 'package:flutter/material.dart';
 import 'package:badminton/common/common_text.dart';
 import 'package:badminton/common/common_font_size.dart';
@@ -10,8 +10,7 @@ import 'package:badminton/core/utils/colors.dart';
 class RequesterAlertDialog extends StatelessWidget {
   final Map<String, dynamic> requester;
 
-  const RequesterAlertDialog({Key? key, required this.requester})
-      : super(key: key);
+  const RequesterAlertDialog({super.key, required this.requester});
 
   @override
   Widget build(BuildContext context) {
@@ -94,9 +93,8 @@ class RequesterAlertDialog extends StatelessWidget {
                 ),
                 kHeight(context, 0.01),
                 Expanded(
-                  flex: 1,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       ElevatedButton(
                         onPressed: () {
@@ -164,7 +162,11 @@ class RequesterAlertDialog extends StatelessWidget {
             right: 6,
             top: 4,
             child: GestureDetector(
-              onTap: () => Navigator.of(context).pop(),
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CoachConnektAvailable(),
+                  )),
               child: const CircleAvatar(
                 radius: 16,
                 backgroundColor: Colors.transparent,
